@@ -41,7 +41,7 @@
                     <TextBox HorizontalAlignment="Left" Height="171" Margin="44,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="434" AcceptsReturn="True" />
                     <DatePicker HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="158"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,259,0,0" TextWrapping="Wrap" Text="Päivämäärä" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="320,259,0,0" TextWrapping="Wrap" Text="Tehtävät" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="320,259,0,0" TextWrapping="Wrap" Text="Tehtävä" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,315,0,0" TextWrapping="Wrap" Text="Kohde" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="320,315,0,0" TextWrapping="Wrap" Text="Tunnit" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,378,0,0" TextWrapping="Wrap" Text="Vapaateksti" VerticalAlignment="Top"/>
