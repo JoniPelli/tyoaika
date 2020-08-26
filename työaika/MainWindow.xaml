@@ -14,18 +14,14 @@ Title="Työajanseuranta" Height="750" Width="1150">
     </Window.BorderBrush>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TabControl HorizontalAlignment="Left" Height="719" VerticalAlignment="Top" Width="1142" Background="#FFE5E5E5" Grid.ColumnSpan="2">
+        <TabControl HorizontalAlignment="Left" Height="721" VerticalAlignment="Top" Width="1144" Background="#FFE5E5E5" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,0,0,-0.2">
             <TabItem Header="Työaika">
                 <Grid Background="#FFE5E5E5">
-                    <ComboBox HorizontalAlignment="Left" Margin="44,336,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3">
+                    <ComboBox x:Name="comboBoxKohde" HorizontalAlignment="Left" Margin="44,336,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3">
                         <ComboBoxItem Content="1 - Keittiö"/>
                         <ComboBoxItem Content="2 - HR"/>
                     </ComboBox>
-                    <ListView HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3">
+                    <ListView x:Name="listViewRivi" HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header=" Päivämäärä "/>
@@ -36,21 +32,21 @@ Title="Työajanseuranta" Height="750" Width="1150">
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button Content="Lähetä" HorizontalAlignment="Left" Margin="814,608,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click" Height="32"/>
-                    <Button Content="Tyhjennä" HorizontalAlignment="Left" Margin="984,608,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click_1" Height="32"/>
-                    <Button Content="Lisää" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="Button_Click_2"/>
-                    <Button Content="Poista" HorizontalAlignment="Left" Margin="402,608,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="Button_Click_4"/>
-                    <Button Content="Muokkaa" HorizontalAlignment="Left" Margin="218,608,0,0" VerticalAlignment="Top" Width="74" Height="32" Click="Button_Click_3"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="252,281,0,0" VerticalAlignment="Top" Width="158">
+                    <Button x:Name="btnRiviLaheta" Content="Lähetä" HorizontalAlignment="Left" Margin="814,608,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click" Height="32"/>
+                    <Button x:Name="btnRiviTyhjenna" Content="Tyhjennä" HorizontalAlignment="Left" Margin="984,608,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click_1" Height="32"/>
+                    <Button x:Name="btnRiviLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="Button_Click_2"/>
+                    <Button x:Name="btnRiviPoista" Content="Poista" HorizontalAlignment="Left" Margin="402,608,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="Button_Click_4"/>
+                    <Button x:Name="btnRiviMuokkaa" Content="Muokkaa" HorizontalAlignment="Left" Margin="218,608,0,0" VerticalAlignment="Top" Width="74" Height="32" Click="Button_Click_3"/>
+                    <ComboBox x:Name="comboBoxTehtava" HorizontalAlignment="Left" Margin="252,281,0,0" VerticalAlignment="Top" Width="158">
                         <ComboBoxItem Content="1 - Päivitys"/>
                         <ComboBoxItem Content="2 -Ylläpito"/>
                     </ComboBox>
-                    <ComboBox HorizontalAlignment="Left" Margin="252,336,0,0" VerticalAlignment="Top" Width="158">
+                    <ComboBox x:Name="comboBoxTunnit" HorizontalAlignment="Left" Margin="252,336,0,0" VerticalAlignment="Top" Width="158">
                         <ComboBoxItem Content="1h"/>
                         <ComboBoxItem Content="2h"/>
                     </ComboBox>
-                    <TextBox HorizontalAlignment="Left" Height="171" Margin="44,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="434" AcceptsReturn="True" Grid.ColumnSpan="3" />
-                    <DatePicker HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="textBoxVapaateksti" HorizontalAlignment="Left" Height="171" Margin="44,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="434" AcceptsReturn="True" Grid.ColumnSpan="3" />
+                    <DatePicker x:Name="datePickerPaivamaara" HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,259,0,0" TextWrapping="Wrap" Text="Päivämäärä" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="252,259,0,0" TextWrapping="Wrap" Text="Tehtävä" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,315,0,0" TextWrapping="Wrap" Text="Kohde" VerticalAlignment="Top"/>
@@ -61,22 +57,31 @@ Title="Työajanseuranta" Height="750" Width="1150">
             <TabItem Header="Haku"/>
             <TabItem Header="Asetukset">
                 <Grid>
-                    <ListView HorizontalAlignment="Left" Height="363" Margin="69.2,53,0,0" VerticalAlignment="Top" Width="234" Grid.Column="1">
+                    <ListView x:Name="listViewTehtavat" HorizontalAlignment="Left" Height="363" Margin="110,53,0,0" VerticalAlignment="Top" Width="234">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header=" Tehtävät "/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ListView HorizontalAlignment="Left" Height="363" Margin="510.2,53,0,0" VerticalAlignment="Top" Width="234" Grid.Column="1">
+                    <ListView x:Name="listViewKohde" HorizontalAlignment="Left" Height="363" Margin="768,53,0,0" VerticalAlignment="Top" Width="234">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header=" Kohde "/>
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <TextBlock HorizontalAlignment="Left" Margin="110,503,0,0" TextWrapping="Wrap" Text="Lisää tehtävä" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="768,503,0,0" TextWrapping="Wrap" Text="Lisää kohde" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxTehtava" Height="23" TextWrapping="Wrap" Margin="110,531,794.4,138.8"/>
+                    <TextBox x:Name="textBoxKohde" Height="23" TextWrapping="Wrap" Margin="768,531,136.4,138.8"/>
+                    <Button x:Name="btnTehtavaLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="110,604,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnTehtavaPoista" Content="Poista" HorizontalAlignment="Left" Margin="269,604,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnKohdeLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="768,599,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnKohdePoista" Content="Poista" HorizontalAlignment="Left" Margin="927,599,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
         </TabControl>
     </Grid>
+    
 </Window>
