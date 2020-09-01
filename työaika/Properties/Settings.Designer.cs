@@ -32,5 +32,16 @@ namespace tyoaika.Properties {
                 return ((string)(this["ProjektiConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=IDEAPAD-4E5KKE5\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Securi" +
+            "ty=True")]
+        public string ProjektiConnectionString1 {
+            get {
+                return ((string)(this["ProjektiConnectionString1"]));
+            }
+        }
     }
 }

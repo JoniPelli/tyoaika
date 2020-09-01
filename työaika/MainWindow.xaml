@@ -5,7 +5,7 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:työaika"
 mc:Ignorable="d"
-Title="Työajanseuranta" Height="750" Width="1150">
+Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
     <Window.BorderBrush>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -32,11 +32,11 @@ Title="Työajanseuranta" Height="750" Width="1150">
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnRiviLaheta" Content="Lähetä" HorizontalAlignment="Left" Margin="814,608,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click" Height="32"/>
-                    <Button x:Name="btnRiviTyhjenna" Content="Tyhjennä" HorizontalAlignment="Left" Margin="984,608,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click_1" Height="32"/>
-                    <Button x:Name="btnRiviLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="Button_Click_2"/>
-                    <Button x:Name="btnRiviPoista" Content="Poista" HorizontalAlignment="Left" Margin="402,608,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="Button_Click_4"/>
-                    <Button x:Name="btnRiviMuokkaa" Content="Muokkaa" HorizontalAlignment="Left" Margin="218,608,0,0" VerticalAlignment="Top" Width="74" Height="32" Click="Button_Click_3"/>
+                    <Button x:Name="btnRiviLaheta" Content="Lähetä" HorizontalAlignment="Left" Margin="814,608,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnRiviLaheta_Click"/>
+                    <Button x:Name="btnRiviTyhjenna" Content="Tyhjennä" HorizontalAlignment="Left" Margin="984,608,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnRiviTyhjenna_Click"/>
+                    <Button x:Name="btnRiviLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="btnRiviLisaa_Click"/>
+                    <Button x:Name="btnRiviPoista" Content="Poista" HorizontalAlignment="Left" Margin="402,608,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="btnRiviPoista_Click"/>
+                    <Button x:Name="btnRiviMuokkaa" Content="Muokkaa" HorizontalAlignment="Left" Margin="218,608,0,0" VerticalAlignment="Top" Width="74" Height="32" Click="btnRiviMuokkaa_Click"/>
                     <ComboBox x:Name="comboBoxTehtava" HorizontalAlignment="Left" Margin="252,281,0,0" VerticalAlignment="Top" Width="158">
                         <ComboBoxItem Content="1 - Päivitys"/>
                         <ComboBoxItem Content="2 -Ylläpito"/>
@@ -57,10 +57,11 @@ Title="Työajanseuranta" Height="750" Width="1150">
             <TabItem Header="Haku"/>
             <TabItem Header="Asetukset">
                 <Grid>
-                    <ListView x:Name="listViewTehtavat" HorizontalAlignment="Left" Height="363" Margin="110,53,0,0" VerticalAlignment="Top" Width="234">
+                    <ListView x:Name="listViewTehtavat" HorizontalAlignment="Left" Height="363" Margin="110,53,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="listViewTehtavat_SelectionChanged" >
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header=" Tehtävät "/>
+                                
+                                <GridViewColumn Header="Tehtävä" DisplayMemberBinding="{Binding Tehtava}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -75,10 +76,10 @@ Title="Työajanseuranta" Height="750" Width="1150">
                     <TextBlock HorizontalAlignment="Left" Margin="768,503,0,0" TextWrapping="Wrap" Text="Lisää kohde" VerticalAlignment="Top"/>
                     <TextBox x:Name="textBoxTehtava" Height="23" TextWrapping="Wrap" Margin="110,531,794.4,138.8"/>
                     <TextBox x:Name="textBoxKohde" Height="23" TextWrapping="Wrap" Margin="768,531,136.4,138.8"/>
-                    <Button x:Name="btnTehtavaLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="110,604,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnTehtavaPoista" Content="Poista" HorizontalAlignment="Left" Margin="269,604,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnKohdeLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="768,599,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnKohdePoista" Content="Poista" HorizontalAlignment="Left" Margin="927,599,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnTehtavaLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="110,604,0,0" VerticalAlignment="Top" Width="75" Click="Button_TehtavaLisaa"/>
+                    <Button x:Name="btnTehtavaPoista" Content="Poista" HorizontalAlignment="Left" Margin="269,604,0,0" VerticalAlignment="Top" Width="75" Click="btnTehtavaPoista_Click"/>
+                    <Button x:Name="btnKohdeLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="768,599,0,0" VerticalAlignment="Top" Width="75" Click="btnKohdeLisaa_Click"/>
+                    <Button x:Name="btnKohdePoista" Content="Poista" HorizontalAlignment="Left" Margin="927,599,0,0" VerticalAlignment="Top" Width="75" Click="btnKohdePoista_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>
