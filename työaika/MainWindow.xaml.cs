@@ -23,6 +23,9 @@ namespace työaika
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<Kohteet> kohteet = new ObservableCollection<Kohteet>();
+        private DataSet1 set1 = new DataSet1();
+
         private ObservableCollection<Tehtavat> tehtavat = new ObservableCollection<Tehtavat>();
         private DataSet1 set = new DataSet1();
 
@@ -41,6 +44,11 @@ namespace työaika
 
             tyoaika.DataSet1TableAdapters.TehtavatTableAdapter adap = new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
             adap.Update(ds.Tehtavat);
+
+            if (this.textBoxKohde.Text.Length == 0)
+            {
+                MessageBox.Show("Et voi lisätä tyhjää riviä!", "Asetukset", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             //Lisätään uusi tehtävä tietokantaan
             HaeData();
         }
@@ -52,6 +60,20 @@ namespace työaika
 
         private void btnKohdeLisaa_Click(object sender, RoutedEventArgs e)
         {
+            DataSet1 ds = new DataSet1();
+            DataSet1.KohteetRow rivi = ds.Kohteet.NewKohteetRow();
+            rivi.Kohde = this.textBoxKohde.Text;
+            ds.Kohteet.AddKohteetRow(rivi);
+            tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap = new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
+            adap.Update(ds.Kohteet);
+            HaeDataKohde();
+
+
+            if (this.textBoxKohde.Text.Length == 0)
+            {
+                MessageBox.Show("Et voi lisätä tyhjää riviä!", "Asetukset", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
 
         }
 
@@ -88,7 +110,11 @@ namespace työaika
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             HaeData();
+
+            HaeDataKohde();
         }
+
+       
         private void HaeData()
         {
             DataSet1 ds = new DataSet1();
@@ -106,7 +132,29 @@ namespace työaika
             this.listViewTehtavat.ItemsSource = tehtavat;
         }
 
+        private void HaeDataKohde()
+        {
+            DataSet1 ds = new DataSet1();
+            tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap =
+                new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
+            kohteet.Clear();
+            adap.Fill(ds.Kohteet);
+            foreach (DataRow row in ds.Tables["Kohteet"].Rows)
+            {
+                Kohteet k = new Kohteet();
+
+                k.Kohde = row["Kohde"].ToString();
+                kohteet.Add(k);
+            }
+            this.listViewKohde.ItemsSource = kohteet;
+        }
+
         private void listViewTehtavat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void listViewKohde_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
