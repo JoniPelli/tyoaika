@@ -104,8 +104,17 @@ namespace työaika
                 tehtavat.Add(t);
             }
             this.listViewTehtavat.ItemsSource = tehtavat;
-        }
+            this.textBoxTehtava.Clear();
+            //Lisätään tehtävät asetuksissa olevaan listanäkymään
 
+            this.comboBoxTehtava.Items.Clear();
+            //this.comboBoxTehtava.Add("Valitse tehtävä");
+            foreach (Tehtavat t in tehtavat)
+            {
+
+            }
+        }
+        
         private void listViewTehtavat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
