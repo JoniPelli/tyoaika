@@ -39,9 +39,20 @@ namespace työaika
             rivi.Tehtava = this.textBoxTehtava.Text;
             ds.Tehtavat.AddTehtavatRow(rivi);
 
-            tyoaika.DataSet1TableAdapters.TehtavatTableAdapter adap = new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
-            adap.Update(ds.Tehtavat);
-            //Lisätään uusi tehtävä tietokantaan
+            if (String.IsNullOrEmpty(textBoxTehtava.Text))
+            {
+                MessageBox.Show("Tyhjä kenttä, ei voi lisätä tietokantaan");
+                //Ei voi lisätä tyhjää riviä tietokantaan
+            }
+            else
+            {
+                tyoaika.DataSet1TableAdapters.TehtavatTableAdapter adap = new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
+                adap.Update(ds.Tehtavat);
+                //Lisätään uusi tehtävä tietokantaan
+
+                
+            }
+            
             HaeData();
         }
 
@@ -96,25 +107,23 @@ namespace työaika
                 new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
             tehtavat.Clear();
             adap.Fill(ds.Tehtavat);
+            
             foreach (DataRow row in ds.Tables["Tehtavat"].Rows)
             {
                 Tehtavat t = new Tehtavat();
 
                 t.Tehtava = row["Tehtava"].ToString();
                 tehtavat.Add(t);
+                
             }
             this.listViewTehtavat.ItemsSource = tehtavat;
             this.textBoxTehtava.Clear();
             //Lisätään tehtävät asetuksissa olevaan listanäkymään
 
-            this.comboBoxTehtava.Items.Clear();
-            //this.comboBoxTehtava.Add("Valitse tehtävä");
-            foreach (Tehtavat t in tehtavat)
-            {
+           
 
-            }
         }
-        
+
         private void listViewTehtavat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

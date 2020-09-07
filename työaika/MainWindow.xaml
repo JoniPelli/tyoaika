@@ -17,6 +17,11 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
         <TabControl HorizontalAlignment="Left" Height="721" VerticalAlignment="Top" Width="1144" Background="#FFE5E5E5" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,0,0,-0.2">
             <TabItem Header="Työaika">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="111*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="1010*"/>
+                    </Grid.ColumnDefinitions>
                     <ComboBox x:Name="comboBoxKohde" HorizontalAlignment="Left" Margin="44,336,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3">
                         <ComboBoxItem Content="1 - Keittiö"/>
                         <ComboBoxItem Content="2 - HR"/>
@@ -32,25 +37,23 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnRiviLaheta" Content="Lähetä" HorizontalAlignment="Left" Margin="814,608,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnRiviLaheta_Click"/>
-                    <Button x:Name="btnRiviTyhjenna" Content="Tyhjennä" HorizontalAlignment="Left" Margin="984,608,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnRiviTyhjenna_Click"/>
-                    <Button x:Name="btnRiviLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="btnRiviLisaa_Click"/>
-                    <Button x:Name="btnRiviPoista" Content="Poista" HorizontalAlignment="Left" Margin="402,608,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="btnRiviPoista_Click"/>
-                    <Button x:Name="btnRiviMuokkaa" Content="Muokkaa" HorizontalAlignment="Left" Margin="218,608,0,0" VerticalAlignment="Top" Width="74" Height="32" Click="btnRiviMuokkaa_Click"/>
-                    <ComboBox x:Name="comboBoxTehtava" HorizontalAlignment="Left" Margin="252,281,0,0" VerticalAlignment="Top" Width="158">
-                        <ComboBoxItem Content="1 - Päivitys"/>
-                        <ComboBoxItem Content="2 -Ylläpito"/>
-                    </ComboBox>
-                    <ComboBox x:Name="comboBoxTunnit" HorizontalAlignment="Left" Margin="252,336,0,0" VerticalAlignment="Top" Width="158">
+                    <Button x:Name="btnRiviLaheta" Content="Lähetä" HorizontalAlignment="Left" Margin="685.2,608,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnRiviLaheta_Click" Grid.Column="2"/>
+                    <Button x:Name="btnRiviTyhjenna" Content="Tyhjennä" HorizontalAlignment="Left" Margin="855.2,608,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnRiviTyhjenna_Click" Grid.Column="2"/>
+                    <Button x:Name="btnRiviLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="btnRiviLisaa_Click" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnRiviPoista" Content="Poista" HorizontalAlignment="Left" Margin="273.2,608,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="btnRiviPoista_Click" Grid.Column="2"/>
+                    <Button x:Name="btnRiviMuokkaa" Content="Muokkaa" HorizontalAlignment="Left" Margin="89.2,608,0,0" VerticalAlignment="Top" Width="74" Height="32" Click="btnRiviMuokkaa_Click" Grid.Column="2"/>
+                    <ComboBox x:Name="comboBoxTehtava" HorizontalAlignment="Left" Margin="123.2,281,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2" />
+
+                    <ComboBox x:Name="comboBoxTunnit" HorizontalAlignment="Left" Margin="123.2,336,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2">
                         <ComboBoxItem Content="1h"/>
                         <ComboBoxItem Content="2h"/>
                     </ComboBox>
                     <TextBox x:Name="textBoxVapaateksti" HorizontalAlignment="Left" Height="171" Margin="44,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="434" AcceptsReturn="True" Grid.ColumnSpan="3" />
                     <DatePicker x:Name="datePickerPaivamaara" HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,259,0,0" TextWrapping="Wrap" Text="Päivämäärä" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="252,259,0,0" TextWrapping="Wrap" Text="Tehtävä" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="123.2,259,0,0" TextWrapping="Wrap" Text="Tehtävä" VerticalAlignment="Top" Grid.Column="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,315,0,0" TextWrapping="Wrap" Text="Kohde" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="252,315,0,0" TextWrapping="Wrap" Text="Tunnit" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="123.2,315,0,0" TextWrapping="Wrap" Text="Tunnit" VerticalAlignment="Top" Grid.Column="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,378,0,0" TextWrapping="Wrap" Text="Vapaateksti" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
@@ -60,7 +63,7 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     <ListView x:Name="listViewTehtavat" HorizontalAlignment="Left" Height="363" Margin="110,53,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="listViewTehtavat_SelectionChanged" >
                         <ListView.View>
                             <GridView>
-                                
+
                                 <GridViewColumn Header="Tehtävä" DisplayMemberBinding="{Binding Tehtava}"/>
                             </GridView>
                         </ListView.View>
@@ -84,5 +87,5 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
             </TabItem>
         </TabControl>
     </Grid>
-    
+
 </Window>
