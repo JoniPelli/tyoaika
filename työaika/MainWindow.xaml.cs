@@ -42,7 +42,7 @@ namespace työaika
             rivi.Tehtava = this.textBoxTehtava.Text;
             ds.Tehtavat.AddTehtavatRow(rivi);
 
-            if (this.textBoxKohde.Text.Length == 0)
+            if (this.textBoxTehtava.Text.Length == 0)
             {
                 MessageBox.Show("Et voi lisätä tyhjää riviä!", "Asetukset", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -66,16 +66,18 @@ namespace työaika
             DataSet1.KohteetRow rivi = ds.Kohteet.NewKohteetRow();
             rivi.Kohde = this.textBoxKohde.Text;
             ds.Kohteet.AddKohteetRow(rivi);
-            tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap = new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
-            adap.Update(ds.Kohteet);
-            HaeDataKohde();
-
 
             if (this.textBoxKohde.Text.Length == 0)
             {
                 MessageBox.Show("Et voi lisätä tyhjää riviä!", "Asetukset", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            else
+            {
+                tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap = new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
+                adap.Update(ds.Kohteet);
+            }
 
+            HaeDataKohde();
 
         }
 
@@ -132,6 +134,7 @@ namespace työaika
                 tehtavat.Add(t);
             }
             this.listViewTehtavat.ItemsSource = tehtavat;
+            this.textBoxTehtava.Clear();
         }
 
         private void HaeDataKohde()
@@ -149,6 +152,7 @@ namespace työaika
                 kohteet.Add(k);
             }
             this.listViewKohde.ItemsSource = kohteet;
+            this.textBoxKohde.Clear();
         }
 
         private void listViewTehtavat_SelectionChanged(object sender, SelectionChangedEventArgs e)
