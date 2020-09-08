@@ -57,7 +57,7 @@ namespace työaika
 
         private void btnTehtavaPoista_Click(object sender, RoutedEventArgs e)
         {
-            //ssdfgstynsthnsthdnhdrtrf
+            //Marjolle hommia
         }
 
         private void btnKohdeLisaa_Click(object sender, RoutedEventArgs e)
