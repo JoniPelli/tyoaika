@@ -112,7 +112,7 @@ namespace työaika
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        { 
             HaeData();
 
             HaeDataKohde();
@@ -126,15 +126,22 @@ namespace työaika
                 new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
             tehtavat.Clear();
             adap.Fill(ds.Tehtavat);
+            this.comboBoxTehtava.Items.Clear(); 
+            this.comboBoxTehtava.SelectedIndex = 0;
             foreach (DataRow row in ds.Tables["Tehtavat"].Rows)
             {
                 Tehtavat t = new Tehtavat();
-
+                t.TehtavatId = int.Parse(row["TehtavaId"].ToString());
                 t.Tehtava = row["Tehtava"].ToString();
                 tehtavat.Add(t);
+                this.comboBoxTehtava.Items.Add(t.TehtavatId + " " + t.Tehtava);
+                //Lisätään tehtävät työaikavälilehden ComboBoksiin
             }
             this.listViewTehtavat.ItemsSource = tehtavat;
             this.textBoxTehtava.Clear();
+            
+
+           
         }
 
         private void HaeDataKohde()
