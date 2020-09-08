@@ -42,12 +42,14 @@ namespace työaika
             rivi.Tehtava = this.textBoxTehtava.Text;
             ds.Tehtavat.AddTehtavatRow(rivi);
 
-            tyoaika.DataSet1TableAdapters.TehtavatTableAdapter adap = new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
-            adap.Update(ds.Tehtavat);
-
             if (this.textBoxKohde.Text.Length == 0)
             {
                 MessageBox.Show("Et voi lisätä tyhjää riviä!", "Asetukset", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                tyoaika.DataSet1TableAdapters.TehtavatTableAdapter adap = new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
+                adap.Update(ds.Tehtavat);
             }
             //Lisätään uusi tehtävä tietokantaan
             HaeData();
