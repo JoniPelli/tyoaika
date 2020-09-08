@@ -68,10 +68,10 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ListView x:Name="listViewKohde" HorizontalAlignment="Left" Height="363" Margin="768,53,0,0" VerticalAlignment="Top" Width="234">
+                    <ListView x:Name="listViewKohde" HorizontalAlignment="Left" Height="363" Margin="768,53,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="listViewKohde_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header=" Kohde "/>
+                                <GridViewColumn Header="Kohde" DisplayMemberBinding="{Binding Kohde}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

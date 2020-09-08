@@ -10,5 +10,6 @@ namespace tyoaika
     {
         public int TehtavatId { get; set; }
         public string Tehtava { get; set; }
+
     }
 }
