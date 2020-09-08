@@ -151,12 +151,15 @@ namespace työaika
                 new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
             kohteet.Clear();
             adap.Fill(ds.Kohteet);
+            this.comboBoxKohde.Items.Clear();
+            this.comboBoxKohde.SelectedIndex = 0;
             foreach (DataRow row in ds.Tables["Kohteet"].Rows)
             {
                 Kohteet k = new Kohteet();
-
+                k.KohdeID = int.Parse(row["KohdeID"].ToString());
                 k.Kohde = row["Kohde"].ToString();
                 kohteet.Add(k);
+                this.comboBoxKohde.Items.Add(k.KohdeID + " " + k.Kohde);
             }
             this.listViewKohde.ItemsSource = kohteet;
             this.textBoxKohde.Clear();
