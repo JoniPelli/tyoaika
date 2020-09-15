@@ -174,5 +174,15 @@ namespace työaika
         {
 
         }
+
+        private void btnHae_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnHakuTyhjenna_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

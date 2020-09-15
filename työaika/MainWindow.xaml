@@ -55,7 +55,27 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     <TextBlock HorizontalAlignment="Left" Margin="44,378,0,0" TextWrapping="Wrap" Text="Vapaateksti" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Haku"/>
+            <TabItem Header="Haku">
+                <Grid>
+                    <ListView HorizontalAlignment="Left" Height="340" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header=" Päivämäärä "/>
+                                <GridViewColumn Header=" Tehtävä "/>
+                                <GridViewColumn Header=" Kohde "/>
+                                <GridViewColumn Header=" Tunnit "/>
+                                <GridViewColumn Header=" Vapaateksti "/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="btnHae" Content="Hae" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="btnHae_Click"/>
+                    <Button x:Name="btnHakuTyhjenna" Content="Tyhjennä" HorizontalAlignment="Left" Margin="218,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="btnHakuTyhjenna_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="44,379,0,0" TextWrapping="Wrap" Text="Alkupäivämäärä" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="44,459,0,0" TextWrapping="Wrap" Text="Päättymispäivämäärä" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="datePickerHaeAlku" HorizontalAlignment="Left" Margin="44,400,0,0" VerticalAlignment="Top" Width="158"/>
+                    <DatePicker x:Name="datePickerHaeLoppu" HorizontalAlignment="Left" Margin="44,480,0,0" VerticalAlignment="Top" Width="158"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="Asetukset">
                 <Grid>
                     <ListView x:Name="listViewTehtavat" HorizontalAlignment="Left" Height="363" Margin="110,53,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="listViewTehtavat_SelectionChanged" >
