@@ -29,10 +29,17 @@ namespace työaika
         private ObservableCollection<Tehtavat> tehtavat = new ObservableCollection<Tehtavat>();
         private DataSet1 set = new DataSet1();
 
+        private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
+
         public MainWindow()
         {
             InitializeComponent();
-            
+            for (int i = 1; i < 25; i++)
+            {
+                this.comboBoxTunnit.Items.Add(i);
+            }
+            this.comboBoxTunnit.SelectedIndex = 0;
+            //Lisätää ComboBoksiin numerot 1-24
         }
 
         private void Button_TehtavaLisaa(object sender, RoutedEventArgs e)
@@ -52,7 +59,7 @@ namespace työaika
                 adap.Update(ds.Tehtavat);
             }
             //Lisätään uusi tehtävä tietokantaan
-            HaeData();
+            HaeDataTehtavat();
         }
 
         private void btnTehtavaPoista_Click(object sender, RoutedEventArgs e)
@@ -88,6 +95,14 @@ namespace työaika
 
         private void btnRiviLisaa_Click(object sender, RoutedEventArgs e)
         {
+            DataSet1 ds = new DataSet1();
+            DataSet1.KirjausRow rivi = ds.Kirjaus.NewKirjausRow();
+            //rivi.Pvm = this.datePickerPaivamaara.SelectedDate.Value; 
+            if (this.comboBoxTunnit.SelectedIndex >= 0)
+            {
+                MessageBox.Show(this.comboBoxTunnit.SelectedValue.ToString());
+                //Lisätään haluttu tuntimäärä listalle
+            }
 
         }
 
@@ -113,13 +128,13 @@ namespace työaika
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         { 
-            HaeData();
+            HaeDataTehtavat();
 
             HaeDataKohde();
         }
 
        
-        private void HaeData()
+        private void HaeDataTehtavat()
         {
             DataSet1 ds = new DataSet1();
             tyoaika.DataSet1TableAdapters.TehtavatTableAdapter adap =
@@ -138,10 +153,7 @@ namespace työaika
                 //Lisätään tehtävät työaikavälilehden ComboBoksiin
             }
             this.listViewTehtavat.ItemsSource = tehtavat;
-            this.textBoxTehtava.Clear();
-            
-
-           
+            this.textBoxTehtava.Clear(); 
         }
 
         private void HaeDataKohde()
@@ -164,6 +176,12 @@ namespace työaika
             this.listViewKohde.ItemsSource = kohteet;
             this.textBoxKohde.Clear();
         }
+
+        //private void HaeDataKirjaus()
+        //{
+        //    DataSet1 ds = new DataSet1();
+        //    tyoaika.DataSet1TableAdapters.KirjausTableAdapter adap = new tyoaika.DataSet1TableAdapters.KirjausTableAdapter();    
+        //}
 
         private void listViewTehtavat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
