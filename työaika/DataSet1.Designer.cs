@@ -32,11 +32,11 @@ namespace tyoaika {
         
         private TehtavatDataTable tableTehtavat;
         
+        private global::System.Data.DataRelation relationFK_Kirjaus_Kohde;
+        
         private global::System.Data.DataRelation relationFK_Kirjaus_Tehtavat;
         
         private global::System.Data.DataRelation relationFK_Kirjaus_Tyontekija;
-        
-        private global::System.Data.DataRelation relationKohteet_Kirjaus;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -272,9 +272,9 @@ namespace tyoaika {
                     this.tableTehtavat.InitVars();
                 }
             }
+            this.relationFK_Kirjaus_Kohde = this.Relations["FK_Kirjaus_Kohde"];
             this.relationFK_Kirjaus_Tehtavat = this.Relations["FK_Kirjaus_Tehtavat"];
             this.relationFK_Kirjaus_Tyontekija = this.Relations["FK_Kirjaus_Tyontekija"];
-            this.relationKohteet_Kirjaus = this.Relations["Kohteet_Kirjaus"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -293,6 +293,10 @@ namespace tyoaika {
             base.Tables.Add(this.tableKohteet);
             this.tableTehtavat = new TehtavatDataTable();
             base.Tables.Add(this.tableTehtavat);
+            this.relationFK_Kirjaus_Kohde = new global::System.Data.DataRelation("FK_Kirjaus_Kohde", new global::System.Data.DataColumn[] {
+                        this.tableKohteet.KohdeIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableKirjaus.KohdeIDColumn}, false);
+            this.Relations.Add(this.relationFK_Kirjaus_Kohde);
             this.relationFK_Kirjaus_Tehtavat = new global::System.Data.DataRelation("FK_Kirjaus_Tehtavat", new global::System.Data.DataColumn[] {
                         this.tableTehtavat.TehtavaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableKirjaus.TehtavaIDColumn}, false);
@@ -301,10 +305,6 @@ namespace tyoaika {
                         this.tableTyontekija.TyontekijaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableKirjaus.TyontekijaIDColumn}, false);
             this.Relations.Add(this.relationFK_Kirjaus_Tyontekija);
-            this.relationKohteet_Kirjaus = new global::System.Data.DataRelation("Kohteet_Kirjaus", new global::System.Data.DataColumn[] {
-                        this.tableKohteet.KohdeIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableKirjaus.KohdeIDColumn}, false);
-            this.Relations.Add(this.relationKohteet_Kirjaus);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -545,7 +545,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public KirjausRow AddKirjausRow(int KirjausID, TyontekijaRow parentTyontekijaRowByFK_Kirjaus_Tyontekija, TehtavatRow parentTehtavatRowByFK_Kirjaus_Tehtavat, KohteetRow parentKohteetRowByKohteet_Kirjaus, int Tunnit, System.DateTime Pvm, string Vapaateksti) {
+            public KirjausRow AddKirjausRow(int KirjausID, TyontekijaRow parentTyontekijaRowByFK_Kirjaus_Tyontekija, TehtavatRow parentTehtavatRowByFK_Kirjaus_Tehtavat, KohteetRow parentKohteetRowByFK_Kirjaus_Kohde, int Tunnit, System.DateTime Pvm, string Vapaateksti) {
                 KirjausRow rowKirjausRow = ((KirjausRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         KirjausID,
@@ -561,8 +561,8 @@ namespace tyoaika {
                 if ((parentTehtavatRowByFK_Kirjaus_Tehtavat != null)) {
                     columnValuesArray[2] = parentTehtavatRowByFK_Kirjaus_Tehtavat[0];
                 }
-                if ((parentKohteetRowByKohteet_Kirjaus != null)) {
-                    columnValuesArray[3] = parentKohteetRowByKohteet_Kirjaus[0];
+                if ((parentKohteetRowByFK_Kirjaus_Kohde != null)) {
+                    columnValuesArray[3] = parentKohteetRowByFK_Kirjaus_Kohde[0];
                 }
                 rowKirjausRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowKirjausRow);
@@ -1695,6 +1695,17 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KohteetRow KohteetRow {
+                get {
+                    return ((KohteetRow)(this.GetParentRow(this.Table.ParentRelations["FK_Kirjaus_Kohde"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Kirjaus_Kohde"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TehtavatRow TehtavatRow {
                 get {
                     return ((TehtavatRow)(this.GetParentRow(this.Table.ParentRelations["FK_Kirjaus_Tehtavat"])));
@@ -1712,17 +1723,6 @@ namespace tyoaika {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Kirjaus_Tyontekija"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public KohteetRow KohteetRow {
-                get {
-                    return ((KohteetRow)(this.GetParentRow(this.Table.ParentRelations["Kohteet_Kirjaus"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Kohteet_Kirjaus"]);
                 }
             }
         }
@@ -1825,11 +1825,11 @@ namespace tyoaika {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public KirjausRow[] GetKirjausRows() {
-                if ((this.Table.ChildRelations["Kohteet_Kirjaus"] == null)) {
+                if ((this.Table.ChildRelations["FK_Kirjaus_Kohde"] == null)) {
                     return new KirjausRow[0];
                 }
                 else {
-                    return ((KirjausRow[])(base.GetChildRows(this.Table.ChildRelations["Kohteet_Kirjaus"])));
+                    return ((KirjausRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Kirjaus_Kohde"])));
                 }
             }
         }
@@ -2199,7 +2199,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2545,7 +2545,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi FROM Tyontekija WHERE (TyontekijaID = @Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2888,7 +2888,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi FROM Tyontekija WHERE (TyontekijaID = @Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3206,7 +3206,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi FROM Tyontekija WHERE (TyontekijaID = @Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
