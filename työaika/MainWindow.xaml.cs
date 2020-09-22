@@ -177,12 +177,13 @@ namespace työaika
 
         private void btnHae_Click(object sender, RoutedEventArgs e)
         {
+            //Hakuvälilehti
 
         }
 
         private void btnHakuTyhjenna_Click(object sender, RoutedEventArgs e)
         {
-
+            //Hakuvälilehti
         }
     }
 }
