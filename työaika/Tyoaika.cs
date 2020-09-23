@@ -9,8 +9,14 @@ namespace tyoaika
 {
     internal class Tyoaika
     {
-        private DatePicker Pvm { get; set; }
-        private string Tunnit { get; set; }
+
+        public DatePicker Pvm { get; set; }
+        public string Tunnit { get; set; }
+        public int TehtavatId { get; set; }
+        public string Tehtava { get; set; }
+        public int KohdeID { get; set; }
+        public string Kohde { get; set; }
+        public string Vapaateksti { get; set; }
 
     }
 }

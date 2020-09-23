@@ -43,20 +43,6 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     <ComboBox x:Name="comboBoxTehtava" HorizontalAlignment="Left" Margin="123.2,281,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2" />
 
                     <ComboBox x:Name="comboBoxTunnit" HorizontalAlignment="Left" Margin="123.2,336,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2" >
-                        <!--<ComboBoxItem Content="1" IsSelected="True" />
-                        <ComboBoxItem Content="2"/>
-                        <ComboBoxItem Content="3"/>
-                        <ComboBoxItem Content="4"/>
-                        <ComboBoxItem Content="5"/>
-                        <ComboBoxItem Content="6"/>
-                        <ComboBoxItem Content="7"/>
-                        <ComboBoxItem Content="8"/>
-                        <ComboBoxItem Content="9"/>
-                        <ComboBoxItem Content="10"/>
-                        <ComboBoxItem Content="11"/>
-                        <ComboBoxItem Content="12"/>
-                        <ComboBoxItem Content="13"/>
-                        <ComboBoxItem Content="14"/>-->
                     </ComboBox>
                     <TextBox x:Name="textBoxVapaateksti" HorizontalAlignment="Left" Height="171" Margin="44,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="434" AcceptsReturn="True" Grid.ColumnSpan="3" />
                     <DatePicker x:Name="datePickerPaivamaara" HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3"/>

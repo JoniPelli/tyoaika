@@ -95,14 +95,33 @@ namespace työaika
 
         private void btnRiviLisaa_Click(object sender, RoutedEventArgs e)
         {
-            DataSet1 ds = new DataSet1();
-            DataSet1.KirjausRow rivi = ds.Kirjaus.NewKirjausRow();
-            //rivi.Pvm = this.datePickerPaivamaara.SelectedDate.Value; 
-            if (this.comboBoxTunnit.SelectedIndex >= 0)
+            if (this.datePickerPaivamaara.SelectedDate == null)
             {
-                MessageBox.Show(this.comboBoxTunnit.SelectedValue.ToString());
-                //Lisätään haluttu tuntimäärä listalle
+                MessageBox.Show("Päivämäärä on tyhjä", "Asetukset", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
+
+            else if (this.datePickerPaivamaara.SelectedDate.HasValue && this.comboBoxTehtava.SelectedIndex >= 0 &&
+                this.comboBoxKohde.SelectedIndex >= 0 && this.comboBoxTunnit.SelectedIndex >= 0)
+            {
+
+                Tyoaika t = new Tyoaika();
+                t.Pvm = this.datePickerPaivamaara;
+                //t.Pvm = this.datePickerPaivamaara.SelectedDate.Value.ToShortDateString();
+                // Ei hyväksy tätä lyhennettyä muotoa DatePickeristä!!
+                //Pitää muotoilla vielä numerot pois??
+                t.Kohde = this.comboBoxKohde.SelectedItem.ToString();
+                t.Tehtava = this.comboBoxTehtava.SelectedItem.ToString();
+                t.Tunnit = this.comboBoxTunnit.SelectedItem.ToString();
+                t.Vapaateksti = this.textBoxVapaateksti.Text;
+                tyoaika.Clear();
+                tyoaika.Add(t);
+                this.listViewRivi.ItemsSource = tyoaika;
+                //Lisätään listanäkymään päivä, tehtävä, kohde, tunnit ja vapaateksti 
+
+            }
+
+
 
         }
 
