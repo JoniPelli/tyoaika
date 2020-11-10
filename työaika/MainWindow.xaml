@@ -24,11 +24,13 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     </Grid.ColumnDefinitions>
                     <ComboBox x:Name="comboBoxKohde" HorizontalAlignment="Left" Margin="44,336,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3">
                     </ComboBox>
-                    <ListView x:Name="listViewRivi" HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3">
+                    <ListView x:Name="listViewRivi" HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3" >
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header=" Päivämäärä " DisplayMemberBinding="{Binding Pvm}"/>
+                                <GridViewColumn Header=" Päivämäärä " DisplayMemberBinding="{Binding stringPvm}"/>
+                                <GridViewColumn Header=" TehtäväId " DisplayMemberBinding="{Binding TehtavaID}"/>
                                 <GridViewColumn Header=" Tehtävä " DisplayMemberBinding="{Binding Tehtava}"/>
+                                <GridViewColumn Header=" KohdeId " DisplayMemberBinding="{Binding KohdeID}"/>
                                 <GridViewColumn Header=" Kohde " DisplayMemberBinding="{Binding Kohde}"/>
                                 <GridViewColumn Header=" Tunnit " DisplayMemberBinding="{Binding Tunnit}"/>
                                 <GridViewColumn Header=" Vapaateksti " DisplayMemberBinding="{Binding Vapaateksti}"/>
@@ -45,7 +47,7 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     <ComboBox x:Name="comboBoxTunnit" HorizontalAlignment="Left" Margin="123.2,336,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2" >
                     </ComboBox>
                     <TextBox x:Name="textBoxVapaateksti" HorizontalAlignment="Left" Height="171" Margin="44,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="434" AcceptsReturn="True" Grid.ColumnSpan="3" />
-                    <DatePicker x:Name="datePickerPaivamaara" HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3"/>
+                    <DatePicker x:Name="datePickerPaivamaara" HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3" FirstDayOfWeek="Monday"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,259,0,0" TextWrapping="Wrap" Text="Päivämäärä" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="123.2,259,0,0" TextWrapping="Wrap" Text="Tehtävä" VerticalAlignment="Top" Grid.Column="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="44,315,0,0" TextWrapping="Wrap" Text="Kohde" VerticalAlignment="Top"/>
@@ -53,7 +55,7 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     <TextBlock HorizontalAlignment="Left" Margin="44,378,0,0" TextWrapping="Wrap" Text="Vapaateksti" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Haku"/>
+            <TabItem Header="Raportti"/>
             <TabItem Header="Asetukset">
                 <Grid>
                     <ListView x:Name="listViewTehtavat" HorizontalAlignment="Left" Height="363" Margin="110,53,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="listViewTehtavat_SelectionChanged" >
