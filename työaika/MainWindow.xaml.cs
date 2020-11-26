@@ -36,7 +36,7 @@ namespace työaika
         
         public MainWindow()
         {
-
+            //Testi
             InitializeComponent();
 
             //Lisätään ComboBoxTunnit numerot 1-24
