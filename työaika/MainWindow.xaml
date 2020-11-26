@@ -24,7 +24,8 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     </Grid.ColumnDefinitions>
                     <ComboBox x:Name="comboBoxKohde" HorizontalAlignment="Left" Margin="44,336,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="3">
                     </ComboBox>
-                    <ListView x:Name="listViewRivi" HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3" >
+                    <ListView x:Name="listViewRivi" HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3" 
+                              ItemsSource="{Binding Path=tyoaika, UpdateSourceTrigger=PropertyChanged}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header=" Päivämäärä " DisplayMemberBinding="{Binding stringPvm}"/>
@@ -41,7 +42,6 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     <Button x:Name="btnRiviTyhjenna" Content="Tyhjennä" HorizontalAlignment="Left" Margin="855.2,608,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnRiviTyhjenna_Click" Grid.Column="2"/>
                     <Button x:Name="btnRiviLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="44,608,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="btnRiviLisaa_Click" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnRiviPoista" Content="Poista" HorizontalAlignment="Left" Margin="273.2,608,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="btnRiviPoista_Click" Grid.Column="2"/>
-                    <Button x:Name="btnRiviMuokkaa" Content="Muokkaa" HorizontalAlignment="Left" Margin="89.2,608,0,0" VerticalAlignment="Top" Width="74" Height="32" Click="btnRiviMuokkaa_Click" Grid.Column="2"/>
                     <ComboBox x:Name="comboBoxTehtava" HorizontalAlignment="Left" Margin="123.2,281,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2" />
 
                     <ComboBox x:Name="comboBoxTunnit" HorizontalAlignment="Left" Margin="123.2,336,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2" >

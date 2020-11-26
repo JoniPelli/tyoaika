@@ -23,7 +23,6 @@ using System.Windows.Controls.Primitives;
 namespace työaika
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -34,25 +33,25 @@ namespace työaika
         private DataSet1 set = new DataSet1();
 
         private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
-
+        
         public MainWindow()
         {
 
             InitializeComponent();
 
-            //Lisätää ComboBoksiin numerot 1-24
+            //Lisätään ComboBoxTunnit numerot 1-24
             for (int i = 1; i < 25; i++)
             {
                 this.comboBoxTunnit.Items.Add(i);
             }
             this.comboBoxTunnit.SelectedIndex = 0;
-            
+
         }
 
         private void Button_TehtavaLisaa(object sender, RoutedEventArgs e)
         {
             //Lisätään uusi tehtävä tietokantaan
-            DataSet1 ds = new DataSet1();  
+            DataSet1 ds = new DataSet1();
             DataSet1.TehtavatRow rivi = ds.Tehtavat.NewTehtavatRow();
             rivi.Tehtava = this.textBoxTehtava.Text;
             ds.Tehtavat.AddTehtavatRow(rivi);
@@ -66,7 +65,6 @@ namespace työaika
                 tyoaika.DataSet1TableAdapters.TehtavatTableAdapter adap = new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
                 adap.Update(ds.Tehtavat);
             }
-           
             HaeDataTehtavat();
         }
 
@@ -91,14 +89,12 @@ namespace työaika
                 tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap = new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
                 adap.Update(ds.Kohteet);
             }
-
             HaeDataKohde();
-
         }
 
         private void btnKohdePoista_Click(object sender, RoutedEventArgs e)
         {
-
+            //Marjolle hommia
         }
 
         private void btnRiviLisaa_Click(object sender, RoutedEventArgs e)
@@ -107,9 +103,10 @@ namespace työaika
             if (this.datePickerPaivamaara.SelectedDate == null)
             {
                 MessageBox.Show("Päivämäärä on tyhjä.", "", MessageBoxButton.OK, MessageBoxImage.Information);
-            }else 
-                {
-                //Lisätään listanäkymään päivä, tehtävä, kohde, tunnit ja vapaateksti
+            }
+            else
+            {
+                //Lisätään työaika listanäkymään valitut päivä, tehtävä, kohde, tunnit ja vapaateksti
                 Tyoaika t = new Tyoaika();
                 t.Pvm = this.datePickerPaivamaara.SelectedDate.Value;
                 t.KohdeID = int.Parse(this.comboBoxKohde.SelectedItem.ToString().
@@ -122,77 +119,69 @@ namespace työaika
                 t.Vapaateksti = this.textBoxVapaateksti.Text;
                 t.paivaysMerkkijoniksi();
                 this.listViewRivi.Items.Add(t);
-                tyoaika.Add(t);//lisätään Tyoaika-olio tyoaika kokoelmaan
+
+                //lisätään Tyoaika-olio tyoaika kokoelmaan
+                tyoaika.Add(t);
             }
-        }
-
-        private void btnRiviMuokkaa_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void btnRiviPoista_Click(object sender, RoutedEventArgs e)
         {
-
-            Tyoaika t = new Tyoaika();
-
-            //foreach (ListViewItem eachItem in listViewRivi.SelectedItems)
-            //{
-            //    listViewRivi.Items.Remove(eachItem);
-            //}
-
-            if (this.listViewRivi.SelectedIndex != 1)
+            if (listViewRivi.SelectedItems.Count == 0)
             {
-                this.listViewRivi.Items.RemoveAt(listViewRivi.SelectedIndex);
-                //    //ObservableCollection<Tyoaika>Remove()
-                //    //tyoaika.Remove(t)tyoaika;
-                //    ////ei toimi, miten poistetaan juuri se määrätty kohde?????
-
+                MessageBox.Show("Valitse poistettava rivi", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            //else
-            //if (listViewRivi.SelectedIndex == 0)
-            //{
-            //    MessageBox.Show("Valitse poistettava rivi","", MessageBoxButton.OK, MessageBoxImage.Information);
-            //}
-            //poista Tyoaika olio myös kokoelmasta tyoaika
+            else
+            {
+                var valitut = listViewRivi.SelectedItems.Cast<object>().ToList();
+                
+                //Poistetaan valitut rivit listalta ja Tyoaika oliosta
+                foreach (object item in valitut)
+                {
+                    listViewRivi.Items.Remove(item);
+                    tyoaika.Remove((Tyoaika)item);
+                }
+            }
         }
 
         private void btnRiviLaheta_Click(object sender, RoutedEventArgs e)
         {
             DataSet1 ds = new DataSet1();
-           
-                // Lisätään listanäkymässä olevat rivit tietokantaan
-                foreach (Tyoaika t in tyoaika)
-                {
-                    DataSet1.KirjausRow rivi = ds.Kirjaus.NewKirjausRow();
-                
-                    rivi.TehtavaID = t.TehtavaID;
-                    rivi.KohdeID = t.KohdeID;
-                    rivi.Pvm = t.Pvm;
-                    rivi.Tunnit = int.Parse(t.Tunnit);
-                    ds.Kirjaus.AddKirjausRow(rivi);
-                }
-     
+
+            // Lisätään työaika -välilehden listanäkymässä olevat rivit tietokantaan
+            foreach (Tyoaika t in tyoaika)
+            {
+                DataSet1.KirjausRow rivi = ds.Kirjaus.NewKirjausRow();
+
+                rivi.TehtavaID = t.TehtavaID;
+                rivi.KohdeID = t.KohdeID;
+                rivi.Pvm = t.Pvm;
+                rivi.Tunnit = int.Parse(t.Tunnit);
+                ds.Kirjaus.AddKirjausRow(rivi);
+            }
+
             KirjausTableAdapter adap = new KirjausTableAdapter();
             adap.Update(ds.Kirjaus);
 
-            //Tyhjentää listanäkymän
-            //this.listViewRivi.Items.Clear();    
+            //Tyhjentää lopuksi listanäkymän ja työaika -olio
+            this.listViewRivi.Items.Clear();
+            tyoaika.Clear();
         }
 
         private void btnRiviTyhjenna_Click(object sender, RoutedEventArgs e)
         {
+            //tyhjennetään työaika välilehden listanäkymä ja tyoaika -olio
             this.listViewRivi.Items.Clear();
+            tyoaika.Clear();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        { 
+        {
             HaeDataTehtavat();
-
             HaeDataKohde();
         }
 
-       
+
         private void HaeDataTehtavat()
         {
             DataSet1 ds = new DataSet1();
@@ -200,7 +189,7 @@ namespace työaika
                 new tyoaika.DataSet1TableAdapters.TehtavatTableAdapter();
             tehtavat.Clear();
             adap.Fill(ds.Tehtavat);
-            this.comboBoxTehtava.Items.Clear(); 
+            this.comboBoxTehtava.Items.Clear();
             this.comboBoxTehtava.SelectedIndex = 0;
 
             //Lisätään Tehtävät tietokantaan
@@ -212,11 +201,11 @@ namespace työaika
                 tehtavat.Add(t);
 
                 //Lisätään tehtävät työaikavälilehden ComboBoksiin
-                this.comboBoxTehtava.Items.Add(t.TehtavatId + " " + t.Tehtava);  
+                this.comboBoxTehtava.Items.Add(t.TehtavatId + " " + t.Tehtava);
             }
             //Lisätään tehtävät työaikavälilehden listanäkymään
             this.listViewTehtavat.ItemsSource = tehtavat;
-            this.textBoxTehtava.Clear(); 
+            this.textBoxTehtava.Clear();
         }
 
         private void HaeDataKohde()
@@ -240,12 +229,6 @@ namespace työaika
             this.textBoxKohde.Clear();
         }
 
-        //private void HaeDataKirjaus()
-        //{
-        //    DataSet1 ds = new DataSet1();
-        //    tyoaika.DataSet1TableAdapters.KirjausTableAdapter adap = new tyoaika.DataSet1TableAdapters.KirjausTableAdapter();    
-        //}
-
         private void listViewTehtavat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -255,7 +238,5 @@ namespace työaika
         {
 
         }
-
-        
     }
 }

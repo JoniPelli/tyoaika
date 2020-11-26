@@ -12,7 +12,6 @@ namespace tyoaika
         public string stringPvm { get; set; }
         public DateTime Pvm { get; set; }
         public string Tunnit { get; set; }
-        //public int TehtavatId {get;set;}
         public int TehtavaID { get; set; }
         public string Tehtava { get; set; }
         public int KohdeID { get; set; }
