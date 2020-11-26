@@ -24,6 +24,7 @@ namespace työaika
 {
     /// <summary>
     /// </summary>
+    /// kommenttia
     public partial class MainWindow : Window
     {
         private ObservableCollection<Kohteet> kohteet = new ObservableCollection<Kohteet>();
