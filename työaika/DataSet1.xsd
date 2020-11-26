@@ -2,42 +2,42 @@
 <xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProjektiConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProjektiConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tyoaika.Properties.Settings.GlobalReference.Default.ProjektiConnectionString1" Provider="System.Data.SqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProjektiConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProjektiConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tyoaika.Properties.Settings.GlobalReference.Default.ProjektiConnectionString" Provider="System.Data.SqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProjektiConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProjektiConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tyoaika.Properties.Settings.GlobalReference.Default.ProjektiConnectionString2" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProjektiConnectionString3" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProjektiConnectionString3 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tyoaika.Properties.Settings.GlobalReference.Default.ProjektiConnectionString3" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KirjausTableAdapter" GeneratorDataComponentClassName="KirjausTableAdapter" Name="Kirjaus" UserDataComponentName="KirjausTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Kirjaus" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProjektiConnectionString3 (Settings)" DbObjectName="Projekti.dbo.Kirjaus" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Kirjaus] WHERE (([KirjausID] = @Original_KirjausID) AND ([TyontekijaID] = @Original_TyontekijaID) AND ([TehtavaID] = @Original_TehtavaID) AND ([KohdeID] = @Original_KohdeID) AND ([Tunnit] = @Original_Tunnit) AND ([Pvm] = @Original_Pvm) AND ([Vapaateksti] = @Original_Vapaateksti))</CommandText>
+                    <CommandText>DELETE FROM [dbo].[Kirjaus] WHERE (([KirjausID] = @Original_KirjausID) AND ((@IsNull_TyontekijaID = 1 AND [TyontekijaID] IS NULL) OR ([TyontekijaID] = @Original_TyontekijaID)) AND ([TehtavaID] = @Original_TehtavaID) AND ([KohdeID] = @Original_KohdeID) AND ([Tunnit] = @Original_Tunnit) AND ((@IsNull_Pvm = 1 AND [Pvm] IS NULL) OR ([Pvm] = @Original_Pvm)) AND ((@IsNull_Vapaateksti = 1 AND [Vapaateksti] IS NULL) OR ([Vapaateksti] = @Original_Vapaateksti)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KirjausID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KirjausID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Tunnit" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Tunnit" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pvm" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vapaateksti" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Kirjaus] ([KirjausID], [TyontekijaID], [TehtavaID], [KohdeID], [Tunnit], [Pvm], [Vapaateksti]) VALUES (@KirjausID, @TyontekijaID, @TehtavaID, @KohdeID, @Tunnit, @Pvm, @Vapaateksti);
-SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FROM Kirjaus WHERE (KirjausID = @KirjausID)</CommandText>
+                    <CommandText>INSERT INTO [dbo].[Kirjaus] ([TyontekijaID], [TehtavaID], [KohdeID], [Tunnit], [Pvm], [Vapaateksti]) VALUES (@TyontekijaID, @TehtavaID, @KohdeID, @Tunnit, @Pvm, @Vapaateksti);
+SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FROM Kirjaus WHERE (KirjausID = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@KirjausID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KirjausID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Tunnit" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Tunnit" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
@@ -49,23 +49,26 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Kirjaus] SET [KirjausID] = @KirjausID, [TyontekijaID] = @TyontekijaID, [TehtavaID] = @TehtavaID, [KohdeID] = @KohdeID, [Tunnit] = @Tunnit, [Pvm] = @Pvm, [Vapaateksti] = @Vapaateksti WHERE (([KirjausID] = @Original_KirjausID) AND ([TyontekijaID] = @Original_TyontekijaID) AND ([TehtavaID] = @Original_TehtavaID) AND ([KohdeID] = @Original_KohdeID) AND ([Tunnit] = @Original_Tunnit) AND ([Pvm] = @Original_Pvm) AND ([Vapaateksti] = @Original_Vapaateksti));
+                    <CommandText>UPDATE [dbo].[Kirjaus] SET [TyontekijaID] = @TyontekijaID, [TehtavaID] = @TehtavaID, [KohdeID] = @KohdeID, [Tunnit] = @Tunnit, [Pvm] = @Pvm, [Vapaateksti] = @Vapaateksti WHERE (([KirjausID] = @Original_KirjausID) AND ((@IsNull_TyontekijaID = 1 AND [TyontekijaID] IS NULL) OR ([TyontekijaID] = @Original_TyontekijaID)) AND ([TehtavaID] = @Original_TehtavaID) AND ([KohdeID] = @Original_KohdeID) AND ([Tunnit] = @Original_Tunnit) AND ((@IsNull_Pvm = 1 AND [Pvm] IS NULL) OR ([Pvm] = @Original_Pvm)) AND ((@IsNull_Vapaateksti = 1 AND [Vapaateksti] IS NULL) OR ([Vapaateksti] = @Original_Vapaateksti)));
 SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FROM Kirjaus WHERE (KirjausID = @KirjausID)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@KirjausID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KirjausID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Tunnit" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Tunnit" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KirjausID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KirjausID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Tunnit" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Tunnit" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pvm" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_Pvm" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vapaateksti" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Vapaateksti" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Vapaateksti" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="KirjausID" ColumnName="KirjausID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@KirjausID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KirjausID" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -82,9 +85,103 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KohteetTableAdapter" GeneratorDataComponentClassName="KohteetTableAdapter" Name="Kohteet" UserDataComponentName="KohteetTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProjektiConnectionString3 (Settings)" DbObjectName="Projekti.dbo.Kohteet" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Kohteet] WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] = @Original_Kohde))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Kohteet] ([Kohde]) VALUES (@Kohde);
+SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT KohdeID, Kohde FROM dbo.Kohteet</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Kohteet] SET [Kohde] = @Kohde WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] = @Original_Kohde));
+SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = @KohdeID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="KohdeID" ColumnName="KohdeID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="KohdeID" DataSetColumn="KohdeID" />
+              <Mapping SourceColumn="Kohde" DataSetColumn="Kohde" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TehtavatTableAdapter" GeneratorDataComponentClassName="TehtavatTableAdapter" Name="Tehtavat" UserDataComponentName="TehtavatTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProjektiConnectionString3 (Settings)" DbObjectName="Projekti.dbo.Tehtavat" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Tehtavat] WHERE (([TehtavaID] = @Original_TehtavaID) AND ([Tehtava] = @Original_Tehtava))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Tehtavat] ([Tehtava]) VALUES (@Tehtava);
+SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TehtavaID, Tehtava FROM dbo.Tehtavat</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Tehtavat] SET [Tehtava] = @Tehtava WHERE (([TehtavaID] = @Original_TehtavaID) AND ([Tehtava] = @Original_Tehtava));
+SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="TehtavaID" ColumnName="TehtavaID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TehtavaID" DataSetColumn="TehtavaID" />
+              <Mapping SourceColumn="Tehtava" DataSetColumn="Tehtava" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TyontekijaTableAdapter" GeneratorDataComponentClassName="TyontekijaTableAdapter" Name="Tyontekija" UserDataComponentName="TyontekijaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Tyontekija" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProjektiConnectionString3 (Settings)" DbObjectName="Projekti.dbo.Tyontekija" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Tyontekija] WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi))</CommandText>
@@ -135,100 +232,6 @@ SELECT TyontekijaID, Etunimi, Sukunimi FROM Tyontekija WHERE (TyontekijaID = @Ty
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KohteetTableAdapter" GeneratorDataComponentClassName="KohteetTableAdapter" Name="Kohteet" UserDataComponentName="KohteetTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Kohteet" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Kohteet] WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] = @Original_Kohde))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Kohteet] ([Kohde]) VALUES (@Kohde);
-SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = SCOPE_IDENTITY())</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT KohdeID, Kohde FROM dbo.Kohteet</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Kohteet] SET [Kohde] = @Kohde WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] = @Original_Kohde));
-SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = @KohdeID)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="KohdeID" ColumnName="KohdeID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="KohdeID" DataSetColumn="KohdeID" />
-              <Mapping SourceColumn="Kohde" DataSetColumn="Kohde" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TehtavatTableAdapter" GeneratorDataComponentClassName="TehtavatTableAdapter" Name="Tehtavat" UserDataComponentName="TehtavatTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Tehtavat" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Tehtavat] WHERE (([TehtavaID] = @Original_TehtavaID) AND ([Tehtava] = @Original_Tehtava))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Tehtavat] ([Tehtava]) VALUES (@Tehtava);
-SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = SCOPE_IDENTITY())</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT TehtavaID, Tehtava FROM dbo.Tehtavat</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Tehtavat] SET [Tehtava] = @Tehtava WHERE (([TehtavaID] = @Original_TehtavaID) AND ([Tehtava] = @Original_Tehtava));
-SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="TehtavaID" ColumnName="TehtavaID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="TehtavaID" DataSetColumn="TehtavaID" />
-              <Mapping SourceColumn="Tehtava" DataSetColumn="Tehtava" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -240,37 +243,16 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
         <xs:element name="Kirjaus" msprop:Generator_TableClassName="KirjausDataTable" msprop:Generator_TableVarName="tableKirjaus" msprop:Generator_TablePropName="Kirjaus" msprop:Generator_RowDeletingName="KirjausRowDeleting" msprop:Generator_RowChangingName="KirjausRowChanging" msprop:Generator_RowEvHandlerName="KirjausRowChangeEventHandler" msprop:Generator_RowDeletedName="KirjausRowDeleted" msprop:Generator_UserTableName="Kirjaus" msprop:Generator_RowChangedName="KirjausRowChanged" msprop:Generator_RowEvArgName="KirjausRowChangeEvent" msprop:Generator_RowClassName="KirjausRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="KirjausID" msprop:Generator_ColumnVarNameInTable="columnKirjausID" msprop:Generator_ColumnPropNameInRow="KirjausID" msprop:Generator_ColumnPropNameInTable="KirjausIDColumn" msprop:Generator_UserColumnName="KirjausID" type="xs:int" />
-              <xs:element name="TyontekijaID" msprop:Generator_ColumnVarNameInTable="columnTyontekijaID" msprop:Generator_ColumnPropNameInRow="TyontekijaID" msprop:Generator_ColumnPropNameInTable="TyontekijaIDColumn" msprop:Generator_UserColumnName="TyontekijaID" type="xs:int" />
+              <xs:element name="KirjausID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnKirjausID" msprop:Generator_ColumnPropNameInRow="KirjausID" msprop:Generator_ColumnPropNameInTable="KirjausIDColumn" msprop:Generator_UserColumnName="KirjausID" type="xs:int" />
+              <xs:element name="TyontekijaID" msprop:Generator_ColumnVarNameInTable="columnTyontekijaID" msprop:Generator_ColumnPropNameInRow="TyontekijaID" msprop:Generator_ColumnPropNameInTable="TyontekijaIDColumn" msprop:Generator_UserColumnName="TyontekijaID" type="xs:int" minOccurs="0" />
               <xs:element name="TehtavaID" msprop:Generator_ColumnVarNameInTable="columnTehtavaID" msprop:Generator_ColumnPropNameInRow="TehtavaID" msprop:Generator_ColumnPropNameInTable="TehtavaIDColumn" msprop:Generator_UserColumnName="TehtavaID" type="xs:int" />
               <xs:element name="KohdeID" msprop:Generator_ColumnVarNameInTable="columnKohdeID" msprop:Generator_ColumnPropNameInRow="KohdeID" msprop:Generator_ColumnPropNameInTable="KohdeIDColumn" msprop:Generator_UserColumnName="KohdeID" type="xs:int" />
               <xs:element name="Tunnit" msprop:Generator_ColumnVarNameInTable="columnTunnit" msprop:Generator_ColumnPropNameInRow="Tunnit" msprop:Generator_ColumnPropNameInTable="TunnitColumn" msprop:Generator_UserColumnName="Tunnit" type="xs:int" />
-              <xs:element name="Pvm" msprop:Generator_ColumnVarNameInTable="columnPvm" msprop:Generator_ColumnPropNameInRow="Pvm" msprop:Generator_ColumnPropNameInTable="PvmColumn" msprop:Generator_UserColumnName="Pvm" type="xs:dateTime" />
-              <xs:element name="Vapaateksti" msprop:Generator_ColumnVarNameInTable="columnVapaateksti" msprop:Generator_ColumnPropNameInRow="Vapaateksti" msprop:Generator_ColumnPropNameInTable="VapaatekstiColumn" msprop:Generator_UserColumnName="Vapaateksti">
+              <xs:element name="Pvm" msprop:Generator_ColumnVarNameInTable="columnPvm" msprop:Generator_ColumnPropNameInRow="Pvm" msprop:Generator_ColumnPropNameInTable="PvmColumn" msprop:Generator_UserColumnName="Pvm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Vapaateksti" msprop:Generator_ColumnVarNameInTable="columnVapaateksti" msprop:Generator_ColumnPropNameInRow="Vapaateksti" msprop:Generator_ColumnPropNameInTable="VapaatekstiColumn" msprop:Generator_UserColumnName="Vapaateksti" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Tyontekija" msprop:Generator_TableClassName="TyontekijaDataTable" msprop:Generator_TableVarName="tableTyontekija" msprop:Generator_TablePropName="Tyontekija" msprop:Generator_RowDeletingName="TyontekijaRowDeleting" msprop:Generator_RowChangingName="TyontekijaRowChanging" msprop:Generator_RowEvHandlerName="TyontekijaRowChangeEventHandler" msprop:Generator_RowDeletedName="TyontekijaRowDeleted" msprop:Generator_UserTableName="Tyontekija" msprop:Generator_RowChangedName="TyontekijaRowChanged" msprop:Generator_RowEvArgName="TyontekijaRowChangeEvent" msprop:Generator_RowClassName="TyontekijaRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="TyontekijaID" msprop:Generator_ColumnVarNameInTable="columnTyontekijaID" msprop:Generator_ColumnPropNameInRow="TyontekijaID" msprop:Generator_ColumnPropNameInTable="TyontekijaIDColumn" msprop:Generator_UserColumnName="TyontekijaID" type="xs:int" />
-              <xs:element name="Etunimi" msprop:Generator_ColumnVarNameInTable="columnEtunimi" msprop:Generator_ColumnPropNameInRow="Etunimi" msprop:Generator_ColumnPropNameInTable="EtunimiColumn" msprop:Generator_UserColumnName="Etunimi">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Sukunimi" msprop:Generator_ColumnVarNameInTable="columnSukunimi" msprop:Generator_ColumnPropNameInRow="Sukunimi" msprop:Generator_ColumnPropNameInTable="SukunimiColumn" msprop:Generator_UserColumnName="Sukunimi">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -305,15 +287,32 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Tyontekija" msprop:Generator_TableClassName="TyontekijaDataTable" msprop:Generator_TableVarName="tableTyontekija" msprop:Generator_TablePropName="Tyontekija" msprop:Generator_RowDeletingName="TyontekijaRowDeleting" msprop:Generator_RowChangingName="TyontekijaRowChanging" msprop:Generator_RowEvHandlerName="TyontekijaRowChangeEventHandler" msprop:Generator_RowDeletedName="TyontekijaRowDeleted" msprop:Generator_UserTableName="Tyontekija" msprop:Generator_RowChangedName="TyontekijaRowChanged" msprop:Generator_RowEvArgName="TyontekijaRowChangeEvent" msprop:Generator_RowClassName="TyontekijaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TyontekijaID" msprop:Generator_ColumnVarNameInTable="columnTyontekijaID" msprop:Generator_ColumnPropNameInRow="TyontekijaID" msprop:Generator_ColumnPropNameInTable="TyontekijaIDColumn" msprop:Generator_UserColumnName="TyontekijaID" type="xs:int" />
+              <xs:element name="Etunimi" msprop:Generator_ColumnVarNameInTable="columnEtunimi" msprop:Generator_ColumnPropNameInRow="Etunimi" msprop:Generator_ColumnPropNameInTable="EtunimiColumn" msprop:Generator_UserColumnName="Etunimi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sukunimi" msprop:Generator_ColumnVarNameInTable="columnSukunimi" msprop:Generator_ColumnPropNameInRow="Sukunimi" msprop:Generator_ColumnPropNameInTable="SukunimiColumn" msprop:Generator_UserColumnName="Sukunimi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Kirjaus" />
       <xs:field xpath="mstns:KirjausID" />
-    </xs:unique>
-    <xs:unique name="Tyontekija_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Tyontekija" />
-      <xs:field xpath="mstns:TyontekijaID" />
     </xs:unique>
     <xs:unique name="Kohteet_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Kohteet" />
@@ -322,6 +321,10 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
     <xs:unique name="Tehtavat_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Tehtavat" />
       <xs:field xpath="mstns:TehtavaID" />
+    </xs:unique>
+    <xs:unique name="Tyontekija_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Tyontekija" />
+      <xs:field xpath="mstns:TyontekijaID" />
     </xs:unique>
   </xs:element>
   <xs:annotation>
