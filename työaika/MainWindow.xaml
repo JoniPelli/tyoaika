@@ -14,7 +14,11 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
     </Window.BorderBrush>
 
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="721" VerticalAlignment="Top" Width="1144" Background="#FFE5E5E5" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,0,0,-0.2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="505*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl HorizontalAlignment="Left" Height="721" VerticalAlignment="Top" Width="1144" Background="#FFE5E5E5" Grid.ColumnSpan="2" Margin="0,0,-2,-2">
             <TabItem Header="Työaika">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -55,7 +59,28 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
                     <TextBlock HorizontalAlignment="Left" Margin="44,378,0,0" TextWrapping="Wrap" Text="Vapaateksti" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Raportti"/>
+            <TabItem Header="Raportti">
+                <Grid>
+                    <ListView HorizontalAlignment="Left" Height="340" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header=" Päivämäärä "/>
+                                <GridViewColumn Header=" Tehtävä "/>
+                                <GridViewColumn Header=" Kohde "/>
+                                <GridViewColumn Header=" Tunnit "/>
+                                <GridViewColumn Header=" Vapaateksti "/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="bntHae" Content="Hae" HorizontalAlignment="Left" Margin="47,600,0,0" VerticalAlignment="Top" Width="75" Click="bntHae_Click"/>
+                    <Button x:Name="btnRaportti" Content="Raportti" HorizontalAlignment="Left" Margin="200,600,0,0" VerticalAlignment="Top" Width="75" Click="btnRaportti_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="44,379,0,0" TextWrapping="Wrap" Text="Alkupäivämäärä" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="44,459,0,0" TextWrapping="Wrap" Text="Päättymispäivämäärä" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="datePickerHaeAlku" HorizontalAlignment="Left" Margin="44,400,0,0" VerticalAlignment="Top" Width="158"/>
+                    <DatePicker x:Name="datePickerHaeLoppu" HorizontalAlignment="Left" Margin="44,480,0,0" VerticalAlignment="Top" Width="158"/>
+                </Grid>
+            </TabItem>
+
             <TabItem Header="Asetukset">
                 <Grid>
                     <ListView x:Name="listViewTehtavat" HorizontalAlignment="Left" Height="363" Margin="110,53,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="listViewTehtavat_SelectionChanged" >

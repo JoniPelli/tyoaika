@@ -239,5 +239,15 @@ namespace työaika
         {
 
         }
+
+        private void bntHae_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRaportti_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
