@@ -170,6 +170,14 @@ namespace työaika
             KirjausTableAdapter adap = new KirjausTableAdapter();
             adap.Update(ds.Kirjaus);
 
+            //Lisätään Windows käyttäjätunnus tietokantaan käyttäjän tunnistamiseksi
+            DataSet1.TyontekijaRow rivi2 = ds.Tyontekija.NewTyontekijaRow();
+            rivi2.Kayttajatunnus = textblockKayttaja.Text;
+            TyontekijaTableAdapter adap1 = new TyontekijaTableAdapter();
+            adap1.Update(ds.Tyontekija);
+
+           
+
             //Tyhjentää lopuksi listanäkymän ja työaika -olio
             this.listViewRivi.Items.Clear();
             tyoaika.Clear();
