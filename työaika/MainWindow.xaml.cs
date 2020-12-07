@@ -20,6 +20,7 @@ using System.Threading;
 using tyoaika.DataSet1TableAdapters;
 using System.Windows.Controls.Primitives;
 
+
 namespace työaika
 {
     /// <summary>
@@ -36,7 +37,8 @@ namespace työaika
         
         public MainWindow()
         {
-            //Testi
+            
+            
             InitializeComponent();
 
             //Lisätään ComboBoxTunnit numerot 1-24
@@ -45,6 +47,11 @@ namespace työaika
                 this.comboBoxTunnit.Items.Add(i);
             }
             this.comboBoxTunnit.SelectedIndex = 0;
+
+            //Lisätään Windows käyttäjätunnus oikeaan yläkulmaan
+            String kayttajatunnus = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            this.textblockKayttaja.Text = kayttajatunnus;
+            
 
         }
 
