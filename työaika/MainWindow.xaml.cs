@@ -34,12 +34,17 @@ namespace työaika
         private DataSet1 set = new DataSet1();
 
         private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
-        
+
+        private Kanta kanta = new Kanta("Data Source = LANKKU\\SQLEXPRESS; Initial Catalog = Projekti; Integrated Security = True");
+
         public MainWindow()
         {
 
             InitializeComponent();
-
+            if(kanta.luoYhteys())
+            {
+                MessageBox.Show("Onnistu");
+            }
             //Lisätään ComboBoxTunnit numerot 1-24
             for (int i = 1; i < 25; i++)
             {
