@@ -36,9 +36,7 @@ namespace työaika
         private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
         
         public MainWindow()
-        {
-            
-            
+        {   
             InitializeComponent();
 
             //Lisätään ComboBoxTunnit numerot 1-24
@@ -176,8 +174,6 @@ namespace työaika
             TyontekijaTableAdapter adap1 = new TyontekijaTableAdapter();
             adap1.Update(ds.Tyontekija);
 
-           
-
             //Tyhjentää lopuksi listanäkymän ja työaika -olio
             this.listViewRivi.Items.Clear();
             tyoaika.Clear();
@@ -194,8 +190,41 @@ namespace työaika
         {
             HaeDataTehtavat();
             HaeDataKohde();
-        }
 
+            //Katsotaan käyttäjätunnuksen ja käyttö-oikeuksien perusteella näkyykö asetukset välilehti
+            DataSet1 ds = new DataSet1();
+            TyontekijaTableAdapter adap = new TyontekijaTableAdapter();
+
+            adap.Fill(ds.Tyontekija);
+
+            string kayttajatunnus = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            bool loyty = false;
+
+            
+            foreach (DataRow row in ds.Tables["Tyontekija"].Rows)
+            {
+                string kTunnus = row["Kayttajatunnus"].ToString();
+                var kOikeus = row["Kayttooikeus"];
+
+                //Käyttäjäoikeuksilla = kOikeus numero 1 on oikeudet asetukset välilehteen muilla ei
+                if (kayttajatunnus.CompareTo(kTunnus) == 0 && kOikeus.Equals(1))
+                {
+                    loyty = true;
+                }
+
+            }
+            if (loyty)
+            {
+                this.textblockKayttaja.Text = kayttajatunnus;
+            }
+            else
+            {
+                this.tabAsetukset.Visibility = Visibility.Hidden;
+            }
+
+
+
+        }
 
         private void HaeDataTehtavat()
         {
