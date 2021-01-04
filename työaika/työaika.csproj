@@ -69,6 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Kanta.cs" />
     <Compile Include="Tehtava.cs" />
     <Compile Include="Tyoaika.cs">
       <Generator>__</Generator>
