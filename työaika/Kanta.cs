@@ -8,9 +8,10 @@ namespace työaika
 {
     public class Kanta
     {
-        private string connStr;//yhteysmerkkijono
+        private string connStr = "";//yhteysmerkkijono
         private SqlConnection conn;//yhteys
         private SqlCommand cmd;//komento
+        private string sql_lause = "SELECT * FROM kirjaus";//sql-kysely
 
 
         public Kanta(string p_connStr)

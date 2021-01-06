@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Threading;
 using tyoaika.DataSet1TableAdapters;
 using System.Windows.Controls.Primitives;
+using System.Data.SqlClient;
 
 namespace työaika
 {
@@ -36,6 +37,8 @@ namespace työaika
         private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
 
         private Kanta kanta = new Kanta("Data Source = LANKKU\\SQLEXPRESS; Initial Catalog = Projekti; Integrated Security = True");
+
+        public SqlConnection conn = new SqlConnection("Data Source=BLACKBOX\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Security=True");
 
         public MainWindow()
         {
@@ -247,12 +250,17 @@ namespace työaika
 
         private void bntHae_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void btnRaportti_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void listViewRaportti_Loaded(object sender, RoutedEventArgs e)
+        {
+          
         }
     }
 }
