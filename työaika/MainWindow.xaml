@@ -61,7 +61,7 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
             </TabItem>
             <TabItem Header="Raportti">
                 <Grid>
-                    <ListView x:Name="listViewRaportti" HorizontalAlignment="Left" Height="340" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="2" Loaded="listViewRaportti_Loaded">
+                    <ListView x:Name="listViewRaportti" HorizontalAlignment="Left" Height="340" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="2" Loaded="listViewRaportti_Loaded" SelectionChanged="listViewRaportti_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header=" Päivämäärä " DisplayMemberBinding="{Binding Paivamaara}"/>

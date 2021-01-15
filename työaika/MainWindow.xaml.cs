@@ -250,7 +250,15 @@ namespace työaika
 
         private void bntHae_Click(object sender, RoutedEventArgs e)
         {
-            
+            var select = "SELECT * FROM Kirjaus";
+            var c = new SqlConnection("Data Source = LANKKU\\SQLEXPRESS; Initial Catalog = Projekti; Integrated Security = True"); // Your Connection String here
+            var dataAdapter = new SqlDataAdapter(select, c);
+
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var ds = new DataSet();
+            dataAdapter.Fill(ds);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.DataSource = ds.Tables[0];
         }
 
         private void btnRaportti_Click(object sender, RoutedEventArgs e)
@@ -261,6 +269,11 @@ namespace työaika
         private void listViewRaportti_Loaded(object sender, RoutedEventArgs e)
         {
           
+        }
+
+        private void listViewRaportti_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
