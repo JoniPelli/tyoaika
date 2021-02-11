@@ -11,7 +11,7 @@ namespace työaika
         private string connStr = "";//yhteysmerkkijono
         private SqlConnection conn;//yhteys
         private SqlCommand cmd;//komento
-        private string sql_lause = "SELECT * FROM kirjaus";//sql-kysely
+        private string sql_lause = "SELECT * FROM Kirjaus";//sql-kysely
 
 
         public Kanta(string p_connStr)
