@@ -250,14 +250,45 @@ namespace työaika
 
         private void bntHae_Click(object sender, RoutedEventArgs e)
         {
-            var select = "SELECT * FROM Kirjaus";
+            DataSet1 ds = new DataSet1();
+            KirjausTableAdapter adap = new KirjausTableAdapter();
+            adap.FillByDate(ds.Kirjaus, "2020-12-9", "2020-12-11");
+            foreach (DataRow row in ds.Tables["Kirjaus"].Rows)
+            {
+                Tyoaika t = new Tyoaika();
+                t.Pvm = DateTime.Parse(row["Pvm"].ToString());
+                t.KohdeID = int.Parse(row["KohdeID"].ToString());
+                t.Kohde = row["Kohde"].ToString();
+                this.listViewRivi.Items.Add(t);
+            }
+            /*
+             * 
+             * 
+             *  DataSet1 ds = new DataSet1();
+            tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap =
+                new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
+            kohteet.Clear();
+            adap.Fill(ds.Kohteet);
+            this.comboBoxKohde.Items.Clear();
+            this.comboBoxKohde.SelectedIndex = 0;
+            foreach (DataRow row in ds.Tables["Kohteet"].Rows)
+            {
+                Kohteet k = new Kohteet();
+                k.KohdeID = int.Parse(row["KohdeID"].ToString());
+                k.Kohde = row["Kohde"].ToString();
+                kohteet.Add(k);
+                this.comboBoxKohde.Items.Add(k.KohdeID + " " + k.Kohde);
+            }
+            this.listViewKohde.ItemsSource = kohteet;
+            this.textBoxKohde.Clear();
+             * var select = "SELECT * FROM Kirjaus";
             var c = new SqlConnection("Data Source=BLACKBOX\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Security=True"); // Your Connection String here
             var dataAdapter = new SqlDataAdapter(select, c);
 
             var commandBuilder = new SqlCommandBuilder(dataAdapter);
             var ds = new DataSet();
             dataAdapter.Fill(ds);
-
+            */
 
 
         }
