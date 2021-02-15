@@ -51,15 +51,17 @@ Title="Työajanseuranta" Height="750" Width="1150" Loaded="Window_Loaded" >
             </TabItem>
             <TabItem Header="Raportti">
                 <Grid>
-                    <DataGrid x:Name="gridViewRaportti" HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header=" Päivämäärä "/>
-                            <DataGridTextColumn Header=" Tehtävä "/>
-                            <DataGridTextColumn Header=" Kohde "/>
-                            <DataGridTextColumn Header=" Tunnit "/>
-                            <DataGridTextColumn Header=" Vapaateksti "/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <ListView x:Name="listViewRaportti" HorizontalAlignment="Left" Height="228" Margin="10,10,0,0" VerticalAlignment="Top" Width="1116" Grid.ColumnSpan="3">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header=" Päivämäärä " DisplayMemberBinding="{Binding Pvm}"/>
+                                <GridViewColumn Header=" Tehtävä " DisplayMemberBinding="{Binding Tehtava}"/>
+                                <GridViewColumn Header=" Kohde " DisplayMemberBinding="{Binding Kohde}"/>
+                                <GridViewColumn Header=" Tunnit " DisplayMemberBinding="{Binding Tunnit}"/>
+                                <GridViewColumn Header=" Vapaateksti " DisplayMemberBinding="{Binding Vapaateksti}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                     <Button x:Name="bntHae" Content="Hae" HorizontalAlignment="Left" Margin="33,600,0,0" VerticalAlignment="Top" Width="75" Click="bntHae_Click" Grid.Column="1"/>
                     <Button x:Name="btnRaportti" Content="Raportti" HorizontalAlignment="Left" Margin="186,600,0,0" VerticalAlignment="Top" Width="75" Click="btnRaportti_Click" Grid.Column="1"/>
                     <TextBlock HorizontalAlignment="Left" Margin="30,379,0,0" TextWrapping="Wrap" Text="Alkupäivämäärä" VerticalAlignment="Top" Grid.Column="1"/>

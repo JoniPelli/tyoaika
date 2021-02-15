@@ -46,7 +46,7 @@ namespace työaika
             InitializeComponent();
             if(kanta.luoYhteys())
             {
-                MessageBox.Show("Onnistu");
+                //MessageBox.Show("Onnistu");
             }
             //Lisätään ComboBoxTunnit numerot 1-24
             for (int i = 1; i < 25; i++)
@@ -166,6 +166,7 @@ namespace työaika
                 rivi.KohdeID = t.KohdeID;
                 rivi.Pvm = t.Pvm;
                 rivi.Tunnit = int.Parse(t.Tunnit);
+                rivi.Vapaateksti = t.Vapaateksti;
                 ds.Kirjaus.AddKirjausRow(rivi);
             }
 
@@ -252,15 +253,26 @@ namespace työaika
         {
             DataSet1 ds = new DataSet1();
             KirjausTableAdapter adap = new KirjausTableAdapter();
-            adap.FillByDate(ds.Kirjaus, "2020-12-9", "2020-12-11");
+            String alku = this.datePickerHaeAlku.SelectedDate.Value.ToString();
+            String loppu = this.datePickerHaeLoppu.SelectedDate.Value.ToString();
+            adap.FillByDate(ds.Kirjaus, alku, loppu);
+            this.listViewRaportti.Items.Clear();
+
             foreach (DataRow row in ds.Tables["Kirjaus"].Rows)
             {
                 Tyoaika t = new Tyoaika();
+                //t.Pvm = DateTime.Parse(row["Pvm"].ToString());
                 t.Pvm = DateTime.Parse(row["Pvm"].ToString());
                 t.KohdeID = int.Parse(row["KohdeID"].ToString());
                 t.Kohde = row["Kohde"].ToString();
-                this.listViewRivi.Items.Add(t);
+                t.TehtavaID = int.Parse(row["TehtavaID"].ToString());
+                t.Tehtava = row["Tehtava"].ToString();
+                t.Tunnit = row["Tunnit"].ToString();
+                t.Vapaateksti = row["Vapaateksti"].ToString();
+                this.listViewRaportti.Items.Add(t);
             }
+
+            //this.listViewRaportti.Items.Clear();
             /*
              * 
              * 

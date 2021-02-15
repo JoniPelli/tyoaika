@@ -2281,7 +2281,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2295,9 +2295,12 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT KirjausID, TyontekijaID, TehtavaID, Kirjaus.KohdeID, Kohteet.Kohde, Tunnit" +
-                ", Pvm, Vapaateksti, Kohteet.Kohde\r\nFROM     Kirjaus, Kohteet\r\nWHERE  (Pvm >= @al" +
-                "kuPvm) AND (Pvm <= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.KohdeID";
+            this._commandCollection[1].CommandText = @"SELECT KirjausID, TyontekijaID, Kirjaus.KohdeID, Kirjaus.TehtavaID, Kohteet.Kohde, Tunnit, Kirjaus.Pvm, Vapaateksti, Kohteet.Kohde, Tehtavat.Tehtava
+
+FROM Kirjaus, Kohteet, Tehtavat
+
+WHERE (Pvm >= @alkuPvm) AND (Pvm <= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.KohdeID AND Tehtavat.TehtavaID = Kirjaus.TehtavaID
+";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alkuPvm", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Pvm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loppuPvm", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Pvm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2715,7 +2718,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3086,7 +3089,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3404,7 +3407,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString;
+            this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
