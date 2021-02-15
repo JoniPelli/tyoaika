@@ -21,6 +21,7 @@ using tyoaika.DataSet1TableAdapters;
 using System.Windows.Controls.Primitives;
 using System.Data.SqlClient;
 
+
 namespace työaika
 {
     /// <summary>
@@ -41,8 +42,7 @@ namespace työaika
         public SqlConnection conn = new SqlConnection("Data Source=BLACKBOX\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Security=True");
 
         public MainWindow()
-        {
-
+        {   
             InitializeComponent();
             if(kanta.luoYhteys())
             {
@@ -55,6 +55,11 @@ namespace työaika
             }
             this.comboBoxTunnit.SelectedIndex = 0;
 
+            //Lisätään Windows käyttäjätunnus oikeaan yläkulmaan
+            String kayttajatunnus = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            this.textblockKayttaja.Text = kayttajatunnus;
+            
+
         }
 
         private void Button_TehtavaLisaa(object sender, RoutedEventArgs e)
@@ -63,11 +68,19 @@ namespace työaika
             DataSet1 ds = new DataSet1();
             DataSet1.TehtavatRow rivi = ds.Tehtavat.NewTehtavatRow();
             rivi.Tehtava = this.textBoxTehtava.Text;
+            String sana = this.textBoxTehtava.Text;
+            
+            
             ds.Tehtavat.AddTehtavatRow(rivi);
 
             if (this.textBoxTehtava.Text.Length == 0)
             {
                 MessageBox.Show("Et voi lisätä tyhjää riviä!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            //Etsitään SQL komentoja tietokantaan lisättävästä rivistä
+            else if (kiellettySana(sana) == true)
+            {
+                MessageBox.Show("Sisältää SQL komentoja, korjaa tehtävän teksti");
             }
             else
             {
@@ -88,10 +101,16 @@ namespace työaika
             DataSet1.KohteetRow rivi = ds.Kohteet.NewKohteetRow();
             rivi.Kohde = this.textBoxKohde.Text;
             ds.Kohteet.AddKohteetRow(rivi);
+            string kohde = this.textBoxKohde.Text;
 
             if (this.textBoxKohde.Text.Length == 0)
             {
                 MessageBox.Show("Et voi lisätä tyhjää riviä!", "Asetukset", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            //Etsitään SQL komentoja tietokantaan lisättävästä rivistä
+            else if (kiellettySana(kohde) == true)
+            {
+                MessageBox.Show("Sisältää SQL komentoja, korjaa kohteen teksti");
             }
             else
             {
@@ -108,10 +127,16 @@ namespace työaika
 
         private void btnRiviLisaa_Click(object sender, RoutedEventArgs e)
         {
+            string vteksti = this.textBoxVapaateksti.Text;
             //Viesti, jos päivämäärä on tyhjä
             if (this.datePickerPaivamaara.SelectedDate == null)
             {
                 MessageBox.Show("Päivämäärä on tyhjä.", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            //Etsitään SQL komentoja tietokantaan lisättävästä rivistä
+            if (kiellettySana(vteksti) == true)
+            {
+                MessageBox.Show("Sisältää SQL komentoja, korjaa vapaateksti");
             }
             else
             {
@@ -173,6 +198,12 @@ namespace työaika
             KirjausTableAdapter adap = new KirjausTableAdapter();
             adap.Update(ds.Kirjaus);
 
+            //Lisätään Windows käyttäjätunnus tietokantaan käyttäjän tunnistamiseksi
+            DataSet1.TyontekijaRow rivi2 = ds.Tyontekija.NewTyontekijaRow();
+            rivi2.Kayttajatunnus = textblockKayttaja.Text;
+            TyontekijaTableAdapter adap1 = new TyontekijaTableAdapter();
+            adap1.Update(ds.Tyontekija);
+
             //Tyhjentää lopuksi listanäkymän ja työaika -olio
             this.listViewRivi.Items.Clear();
             tyoaika.Clear();
@@ -189,8 +220,41 @@ namespace työaika
         {
             HaeDataTehtavat();
             HaeDataKohde();
-        }
 
+            //Katsotaan käyttäjätunnuksen ja käyttö-oikeuksien perusteella näkyykö asetukset välilehti
+            DataSet1 ds = new DataSet1();
+            TyontekijaTableAdapter adap = new TyontekijaTableAdapter();
+
+            adap.Fill(ds.Tyontekija);
+
+            string kayttajatunnus = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            bool loyty = false;
+
+            
+            foreach (DataRow row in ds.Tables["Tyontekija"].Rows)
+            {
+                string kTunnus = row["Kayttajatunnus"].ToString();
+                var kOikeus = row["Kayttooikeus"];
+
+                //Käyttäjäoikeuksilla = kOikeus numero 1 on oikeudet asetukset välilehteen muilla ei
+                if (kayttajatunnus.CompareTo(kTunnus) == 0 && kOikeus.Equals(1))
+                {
+                    loyty = true;
+                }
+
+            }
+            if (loyty)
+            {
+                this.textblockKayttaja.Text = kayttajatunnus;
+            }
+            else
+            {
+                this.tabAsetukset.Visibility = Visibility.Hidden;
+            }
+
+
+
+        }
 
         private void HaeDataTehtavat()
         {
@@ -248,6 +312,7 @@ namespace työaika
         {
 
         }
+
 
         private void bntHae_Click(object sender, RoutedEventArgs e)
         {
@@ -317,6 +382,27 @@ namespace työaika
 
         private void listViewRaportti_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+
+        private bool kiellettySana(String sana)
+        {
+            //Tarkastetaan, ettei tekstikenttiin voi kirjoittaa SQL komentoja
+            string[] sanat = new  string[]{"select","drop","update","delete","insert","create","alter",
+            "from","select*"};
+            string[] lista = new string[] { };
+            string pienella = sana.ToLower();
+            lista = pienella.Split(' ');
+
+            for (int i = 0; i < sanat.Length; i++)
+            {
+                for (int j = 0; j < lista.Length; j++) {
+                    if (sanat[i].Equals(lista[j]))
+                    { return true; }
+
+                }
+               
+            }
+            return false;
 
         }
     }
