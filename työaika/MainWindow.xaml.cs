@@ -19,12 +19,14 @@ using System.Globalization;
 using System.Threading;
 using tyoaika.DataSet1TableAdapters;
 using System.Windows.Controls.Primitives;
+using System.Data.SqlClient;
 
 
 namespace työaika
 {
     /// <summary>
     /// </summary>
+    /// kommenttia
     public partial class MainWindow : Window
     {
         private ObservableCollection<Kohteet> kohteet = new ObservableCollection<Kohteet>();
@@ -34,11 +36,18 @@ namespace työaika
         private DataSet1 set = new DataSet1();
 
         private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
-        
+
+        private Kanta kanta = new Kanta("Data Source = LANKKU\\SQLEXPRESS; Initial Catalog = Projekti; Integrated Security = True");
+
+        public SqlConnection conn = new SqlConnection("Data Source=BLACKBOX\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Security=True");
+
         public MainWindow()
         {   
             InitializeComponent();
-
+            if(kanta.luoYhteys())
+            {
+                //MessageBox.Show("Onnistu");
+            }
             //Lisätään ComboBoxTunnit numerot 1-24
             for (int i = 1; i < 25; i++)
             {
@@ -182,6 +191,7 @@ namespace työaika
                 rivi.KohdeID = t.KohdeID;
                 rivi.Pvm = t.Pvm;
                 rivi.Tunnit = int.Parse(t.Tunnit);
+                rivi.Vapaateksti = t.Vapaateksti;
                 ds.Kirjaus.AddKirjausRow(rivi);
             }
 
@@ -303,6 +313,77 @@ namespace työaika
 
         }
 
+
+        private void bntHae_Click(object sender, RoutedEventArgs e)
+        {
+            DataSet1 ds = new DataSet1();
+            KirjausTableAdapter adap = new KirjausTableAdapter();
+            String alku = this.datePickerHaeAlku.SelectedDate.Value.ToString();
+            String loppu = this.datePickerHaeLoppu.SelectedDate.Value.ToString();
+            adap.FillByDate(ds.Kirjaus, alku, loppu);
+            this.listViewRaportti.Items.Clear();
+
+            foreach (DataRow row in ds.Tables["Kirjaus"].Rows)
+            {
+                Tyoaika t = new Tyoaika();
+                //t.Pvm = DateTime.Parse(row["Pvm"].ToString());
+                t.Pvm = DateTime.Parse(row["Pvm"].ToString());
+                t.KohdeID = int.Parse(row["KohdeID"].ToString());
+                t.Kohde = row["Kohde"].ToString();
+                t.TehtavaID = int.Parse(row["TehtavaID"].ToString());
+                t.Tehtava = row["Tehtava"].ToString();
+                t.Tunnit = row["Tunnit"].ToString();
+                t.Vapaateksti = row["Vapaateksti"].ToString();
+                this.listViewRaportti.Items.Add(t);
+            }
+
+            //this.listViewRaportti.Items.Clear();
+            /*
+             * 
+             * 
+             *  DataSet1 ds = new DataSet1();
+            tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap =
+                new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
+            kohteet.Clear();
+            adap.Fill(ds.Kohteet);
+            this.comboBoxKohde.Items.Clear();
+            this.comboBoxKohde.SelectedIndex = 0;
+            foreach (DataRow row in ds.Tables["Kohteet"].Rows)
+            {
+                Kohteet k = new Kohteet();
+                k.KohdeID = int.Parse(row["KohdeID"].ToString());
+                k.Kohde = row["Kohde"].ToString();
+                kohteet.Add(k);
+                this.comboBoxKohde.Items.Add(k.KohdeID + " " + k.Kohde);
+            }
+            this.listViewKohde.ItemsSource = kohteet;
+            this.textBoxKohde.Clear();
+             * var select = "SELECT * FROM Kirjaus";
+            var c = new SqlConnection("Data Source=BLACKBOX\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Security=True"); // Your Connection String here
+            var dataAdapter = new SqlDataAdapter(select, c);
+
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var ds = new DataSet();
+            dataAdapter.Fill(ds);
+            */
+
+
+        }
+
+        private void btnRaportti_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void listViewRaportti_Loaded(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void listViewRaportti_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
         private bool kiellettySana(String sana)
         {
             //Tarkastetaan, ettei tekstikenttiin voi kirjoittaa SQL komentoja
@@ -322,6 +403,7 @@ namespace työaika
                
             }
             return false;
+
         }
     }
 }
