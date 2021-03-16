@@ -773,6 +773,8 @@ namespace tyoaika {
             
             private global::System.Data.DataColumn columnKayttajatunnus;
             
+            private global::System.Data.DataColumn columnKayttooikeus;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TyontekijaDataTable() {
@@ -840,6 +842,14 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KayttooikeusColumn {
+                get {
+                    return this.columnKayttooikeus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -875,13 +885,14 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TyontekijaRow AddTyontekijaRow(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus) {
+            public TyontekijaRow AddTyontekijaRow(string Etunimi, string Sukunimi, string Kayttajatunnus, int Kayttooikeus) {
                 TyontekijaRow rowTyontekijaRow = ((TyontekijaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        TyontekijaID,
+                        null,
                         Etunimi,
                         Sukunimi,
-                        Kayttajatunnus};
+                        Kayttajatunnus,
+                        Kayttooikeus};
                 rowTyontekijaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTyontekijaRow);
                 return rowTyontekijaRow;
@@ -915,6 +926,7 @@ namespace tyoaika {
                 this.columnEtunimi = base.Columns["Etunimi"];
                 this.columnSukunimi = base.Columns["Sukunimi"];
                 this.columnKayttajatunnus = base.Columns["Kayttajatunnus"];
+                this.columnKayttooikeus = base.Columns["Kayttooikeus"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -928,9 +940,15 @@ namespace tyoaika {
                 base.Columns.Add(this.columnSukunimi);
                 this.columnKayttajatunnus = new global::System.Data.DataColumn("Kayttajatunnus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKayttajatunnus);
+                this.columnKayttooikeus = new global::System.Data.DataColumn("Kayttooikeus", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKayttooikeus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTyontekijaID}, true));
+                this.columnTyontekijaID.AutoIncrement = true;
+                this.columnTyontekijaID.AutoIncrementSeed = -1;
+                this.columnTyontekijaID.AutoIncrementStep = -1;
                 this.columnTyontekijaID.AllowDBNull = false;
+                this.columnTyontekijaID.ReadOnly = true;
                 this.columnTyontekijaID.Unique = true;
                 this.columnEtunimi.AllowDBNull = false;
                 this.columnEtunimi.MaxLength = 30;
@@ -1352,10 +1370,6 @@ namespace tyoaika {
             
             private global::System.Data.DataColumn columnTehtava;
             
-            private global::System.Data.DataColumn columnKayttajatunnus;
-            
-            private global::System.Data.DataColumn columnKayttooikeus;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TehtavatDataTable() {
@@ -1407,22 +1421,6 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn KayttajatunnusColumn {
-                get {
-                    return this.columnKayttajatunnus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn KayttooikeusColumn {
-                get {
-                    return this.columnKayttooikeus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1458,19 +1456,14 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-
-            public TyontekijaRow AddTyontekijaRow(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus, int Kayttooikeus) {
-                TyontekijaRow rowTyontekijaRow = ((TyontekijaRow)(this.NewRow()));
+            public TehtavatRow AddTehtavatRow(string Tehtava) {
+                TehtavatRow rowTehtavatRow = ((TehtavatRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        TyontekijaID,
-                        Etunimi,
-                        Sukunimi,
-                        Kayttajatunnus,
-                        Kayttooikeus};
-                rowTyontekijaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTyontekijaRow);
-                return rowTyontekijaRow;
-
+                        null,
+                        Tehtava};
+                rowTehtavatRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTehtavatRow);
+                return rowTehtavatRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1497,39 +1490,27 @@ namespace tyoaika {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-
-                this.columnTyontekijaID = base.Columns["TyontekijaID"];
-                this.columnEtunimi = base.Columns["Etunimi"];
-                this.columnSukunimi = base.Columns["Sukunimi"];
-                this.columnKayttajatunnus = base.Columns["Kayttajatunnus"];
-                this.columnKayttooikeus = base.Columns["Kayttooikeus"];
-
+                this.columnTehtavaID = base.Columns["TehtavaID"];
+                this.columnTehtava = base.Columns["Tehtava"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-
-                this.columnTyontekijaID = new global::System.Data.DataColumn("TyontekijaID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTyontekijaID);
-                this.columnEtunimi = new global::System.Data.DataColumn("Etunimi", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEtunimi);
-                this.columnSukunimi = new global::System.Data.DataColumn("Sukunimi", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSukunimi);
-                this.columnKayttajatunnus = new global::System.Data.DataColumn("Kayttajatunnus", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKayttajatunnus);
-                this.columnKayttooikeus = new global::System.Data.DataColumn("Kayttooikeus", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKayttooikeus);
+                this.columnTehtavaID = new global::System.Data.DataColumn("TehtavaID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTehtavaID);
+                this.columnTehtava = new global::System.Data.DataColumn("Tehtava", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTehtava);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnTyontekijaID}, true));
-                this.columnTyontekijaID.AllowDBNull = false;
-                this.columnTyontekijaID.Unique = true;
-                this.columnEtunimi.AllowDBNull = false;
-                this.columnEtunimi.MaxLength = 30;
-                this.columnSukunimi.AllowDBNull = false;
-                this.columnSukunimi.MaxLength = 30;
-                this.columnKayttajatunnus.MaxLength = 50;
-
+                                this.columnTehtavaID}, true));
+                this.columnTehtavaID.AutoIncrement = true;
+                this.columnTehtavaID.AutoIncrementSeed = -1;
+                this.columnTehtavaID.AutoIncrementStep = -1;
+                this.columnTehtavaID.AllowDBNull = false;
+                this.columnTehtavaID.ReadOnly = true;
+                this.columnTehtavaID.Unique = true;
+                this.columnTehtava.AllowDBNull = false;
+                this.columnTehtava.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1880,6 +1861,22 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Kayttooikeus {
+                get {
+                    try {
+                        return ((int)(this[this.tableTyontekija.KayttooikeusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kayttooikeus\' in table \'Tyontekija\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTyontekija.KayttooikeusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsKayttajatunnusNull() {
                 return this.IsNull(this.tableTyontekija.KayttajatunnusColumn);
             }
@@ -1888,6 +1885,18 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetKayttajatunnusNull() {
                 this[this.tableTyontekija.KayttajatunnusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsKayttooikeusNull() {
+                return this.IsNull(this.tableTyontekija.KayttooikeusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetKayttooikeusNull() {
+                this[this.tableTyontekija.KayttooikeusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1984,62 +1993,6 @@ namespace tyoaika {
                 set {
                     this[this.tableTehtavat.TehtavaColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Kayttajatunnus {
-                get {
-                    try {
-                        return ((string)(this[this.tableTyontekija.KayttajatunnusColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Kayttajatunnus\' in table \'Tyontekija\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTyontekija.KayttajatunnusColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Kayttooikeus {
-                get {
-                    try {
-                        return ((int)(this[this.tableTyontekija.KayttooikeusColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Kayttooikeus\' in table \'Tyontekija\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTyontekija.KayttooikeusColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsKayttajatunnusNull() {
-                return this.IsNull(this.tableTyontekija.KayttajatunnusColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetKayttajatunnusNull() {
-                this[this.tableTyontekija.KayttajatunnusColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsKayttooikeusNull() {
-                return this.IsNull(this.tableTyontekija.KayttooikeusColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetKayttooikeusNull() {
-                this[this.tableTyontekija.KayttooikeusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2392,8 +2345,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
 
 FROM Kirjaus, Kohteet, Tehtavat
 
-WHERE (Pvm >= @alkuPvm) AND (Pvm <= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.KohdeID AND Tehtavat.TehtavaID = Kirjaus.TehtavaID
-";
+WHERE (Pvm >= @alkuPvm) AND (Pvm <= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.KohdeID AND Tehtavat.TehtavaID = Kirjaus.TehtavaID";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alkuPvm", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Pvm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loppuPvm", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Pvm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2772,39 +2724,45 @@ WHERE (Pvm >= @alkuPvm) AND (Pvm <= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.Koh
             tableMapping.ColumnMappings.Add("Etunimi", "Etunimi");
             tableMapping.ColumnMappings.Add("Sukunimi", "Sukunimi");
             tableMapping.ColumnMappings.Add("Kayttajatunnus", "Kayttajatunnus");
+            tableMapping.ColumnMappings.Add("Kayttooikeus", "Kayttooikeus");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tyontekija] WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tyontekija] WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ((@IsNull_Kayttooikeus = 1 AND [Kayttooikeus] IS NULL) OR ([Kayttooikeus] = @Original_Kayttooikeus)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttajatunnus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tyontekija] ([TyontekijaID], [Etunimi], [Sukunimi], [Kayttajatunnus]) VALUES (@TyontekijaID, @Etunimi, @Sukunimi, @Kayttajatunnus);
-SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tyontekija] ([Etunimi], [Sukunimi], [Kayttajatunnus], [Kayttooikeus]) VALUES (@Etunimi, @Sukunimi, @Kayttajatunnus, @Kayttooikeus);
+SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyontekija WHERE (TyontekijaID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tyontekija] SET [TyontekijaID] = @TyontekijaID, [Etunimi] = @Etunimi, [Sukunimi] = @Sukunimi, [Kayttajatunnus] = @Kayttajatunnus WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)));
-SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tyontekija] SET [Etunimi] = @Etunimi, [Sukunimi] = @Sukunimi, [Kayttajatunnus] = @Kayttajatunnus, [Kayttooikeus] = @Kayttooikeus WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ((@IsNull_Kayttooikeus = 1 AND [Kayttooikeus] IS NULL) OR ([Kayttooikeus] = @Original_Kayttooikeus)));
+SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttajatunnus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyontekijaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2820,7 +2778,8 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM dbo.Tyontekija";
+            this._commandCollection[0].CommandText = "SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM dbo.Tyo" +
+                "ntekija";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2881,7 +2840,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus) {
+        public virtual int Delete(int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus, global::System.Nullable<int> Original_Kayttooikeus) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_TyontekijaID));
             if ((Original_Etunimi == null)) {
                 throw new global::System.ArgumentNullException("Original_Etunimi");
@@ -2903,6 +2862,14 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Kayttajatunnus));
             }
+            if ((Original_Kayttooikeus.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Kayttooikeus.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2923,25 +2890,30 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(TyontekijaID));
+        public virtual int Insert(string Etunimi, string Sukunimi, string Kayttajatunnus, global::System.Nullable<int> Kayttooikeus) {
             if ((Etunimi == null)) {
                 throw new global::System.ArgumentNullException("Etunimi");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Etunimi));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Etunimi));
             }
             if ((Sukunimi == null)) {
                 throw new global::System.ArgumentNullException("Sukunimi");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Sukunimi));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Sukunimi));
             }
             if ((Kayttajatunnus == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Kayttajatunnus));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Kayttajatunnus));
+            }
+            if ((Kayttooikeus.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(Kayttooikeus.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2963,25 +2935,30 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(TyontekijaID));
+        public virtual int Update(string Etunimi, string Sukunimi, string Kayttajatunnus, global::System.Nullable<int> Kayttooikeus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus, global::System.Nullable<int> Original_Kayttooikeus, int TyontekijaID) {
             if ((Etunimi == null)) {
                 throw new global::System.ArgumentNullException("Etunimi");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Etunimi));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Etunimi));
             }
             if ((Sukunimi == null)) {
                 throw new global::System.ArgumentNullException("Sukunimi");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Sukunimi));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Sukunimi));
             }
             if ((Kayttajatunnus == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Kayttajatunnus));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Kayttajatunnus));
+            }
+            if ((Kayttooikeus.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Kayttooikeus.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_TyontekijaID));
             if ((Original_Etunimi == null)) {
@@ -3004,6 +2981,15 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Kayttajatunnus));
             }
+            if ((Original_Kayttooikeus.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Kayttooikeus.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(TyontekijaID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3024,8 +3010,8 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Etunimi, string Sukunimi, string Kayttajatunnus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus) {
-            return this.Update(Original_TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Original_TyontekijaID, Original_Etunimi, Original_Sukunimi, Original_Kayttajatunnus);
+        public virtual int Update(string Etunimi, string Sukunimi, string Kayttajatunnus, global::System.Nullable<int> Kayttooikeus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus, global::System.Nullable<int> Original_Kayttooikeus) {
+            return this.Update(Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus, Original_TyontekijaID, Original_Etunimi, Original_Sukunimi, Original_Kayttajatunnus, Original_Kayttooikeus, Original_TyontekijaID);
         }
     }
     
@@ -3467,53 +3453,33 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-
-            tableMapping.DataSetTable = "Tyontekija";
-            tableMapping.ColumnMappings.Add("TyontekijaID", "TyontekijaID");
-            tableMapping.ColumnMappings.Add("Etunimi", "Etunimi");
-            tableMapping.ColumnMappings.Add("Sukunimi", "Sukunimi");
-            tableMapping.ColumnMappings.Add("Kayttajatunnus", "Kayttajatunnus");
-            tableMapping.ColumnMappings.Add("Kayttooikeus", "Kayttooikeus");
+            tableMapping.DataSetTable = "Tehtavat";
+            tableMapping.ColumnMappings.Add("TehtavaID", "TehtavaID");
+            tableMapping.ColumnMappings.Add("Tehtava", "Tehtava");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tyontekija] WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ((@IsNull_Kayttooikeus = 1 AND [Kayttooikeus] IS NULL) OR ([Kayttooikeus] = @Original_Kayttooikeus)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Tehtavat] WHERE (([TehtavaID] = @Original_TehtavaID) AND ([Teh" +
+                "tava] = @Original_Tehtava))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttajatunnus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TehtavaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TehtavaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tehtava", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tehtava", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tyontekija] ([TyontekijaID], [Etunimi], [Sukunimi], [Kayttajatunnus], [Kayttooikeus]) VALUES (@TyontekijaID, @Etunimi, @Sukunimi, @Kayttajatunnus, @Kayttooikeus);
-SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tehtavat] ([Tehtava]) VALUES (@Tehtava);\r\nSELECT TehtavaID, Te" +
+                "htava FROM Tehtavat WHERE (TehtavaID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tehtava", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tehtava", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tyontekija] SET [TyontekijaID] = @TyontekijaID, [Etunimi] = @Etunimi, [Sukunimi] = @Sukunimi, [Kayttajatunnus] = @Kayttajatunnus, [Kayttooikeus] = @Kayttooikeus WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ((@IsNull_Kayttooikeus = 1 AND [Kayttooikeus] IS NULL) OR ([Kayttooikeus] = @Original_Kayttooikeus)));
-SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tehtavat] SET [Tehtava] = @Tehtava WHERE (([TehtavaID] = @Original_" +
+                "TehtavaID) AND ([Tehtava] = @Original_Tehtava));\r\nSELECT TehtavaID, Tehtava FROM" +
+                " Tehtavat WHERE (TehtavaID = @TehtavaID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TyontekijaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyontekijaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Etunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Etunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttajatunnus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttooikeus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttooikeus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tehtava", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tehtava", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TehtavaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TehtavaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tehtava", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tehtava", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TehtavaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TehtavaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3529,10 +3495,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyonte
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-
-            this._commandCollection[0].CommandText = "SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM dbo.Tyo" +
-                "ntekija";
-
+            this._commandCollection[0].CommandText = "SELECT TehtavaID, Tehtava FROM dbo.Tehtavat";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3593,37 +3556,13 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyonte
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-
-        public virtual int Delete(int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus, global::System.Nullable<int> Original_Kayttooikeus) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_TyontekijaID));
-            if ((Original_Etunimi == null)) {
-                throw new global::System.ArgumentNullException("Original_Etunimi");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Etunimi));
-            }
-            if ((Original_Sukunimi == null)) {
-                throw new global::System.ArgumentNullException("Original_Sukunimi");
-
+        public virtual int Delete(int Original_TehtavaID, string Original_Tehtava) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_TehtavaID));
+            if ((Original_Tehtava == null)) {
+                throw new global::System.ArgumentNullException("Original_Tehtava");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Tehtava));
-            }
-            if ((Original_Kayttajatunnus == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Kayttajatunnus));
-            }
-            if ((Original_Kayttooikeus.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Kayttooikeus.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3645,33 +3584,12 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyonte
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-
-        public virtual int Insert(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus, global::System.Nullable<int> Kayttooikeus) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(TyontekijaID));
-            if ((Etunimi == null)) {
-                throw new global::System.ArgumentNullException("Etunimi");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Etunimi));
-            }
-            if ((Sukunimi == null)) {
-                throw new global::System.ArgumentNullException("Sukunimi");
-
+        public virtual int Insert(string Tehtava) {
+            if ((Tehtava == null)) {
+                throw new global::System.ArgumentNullException("Tehtava");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Tehtava));
-            }
-            if ((Kayttajatunnus == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Kayttajatunnus));
-            }
-            if ((Kayttooikeus.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Kayttooikeus.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3693,65 +3611,19 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyonte
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-
-        public virtual int Update(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus, global::System.Nullable<int> Kayttooikeus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus, global::System.Nullable<int> Original_Kayttooikeus) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(TyontekijaID));
-            if ((Etunimi == null)) {
-                throw new global::System.ArgumentNullException("Etunimi");
+        public virtual int Update(string Tehtava, int Original_TehtavaID, string Original_Tehtava, int TehtavaID) {
+            if ((Tehtava == null)) {
+                throw new global::System.ArgumentNullException("Tehtava");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Etunimi));
-            }
-            if ((Sukunimi == null)) {
-                throw new global::System.ArgumentNullException("Sukunimi");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Sukunimi));
-            }
-            if ((Kayttajatunnus == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Kayttajatunnus));
-            }
-            if ((Kayttooikeus.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Kayttooikeus.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_TyontekijaID));
-            if ((Original_Etunimi == null)) {
-                throw new global::System.ArgumentNullException("Original_Etunimi");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Etunimi));
-
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Tehtava));
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_TehtavaID));
             if ((Original_Tehtava == null)) {
                 throw new global::System.ArgumentNullException("Original_Tehtava");
             }
             else {
-
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Sukunimi));
-            }
-            if ((Original_Kayttajatunnus == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Kayttajatunnus));
-            }
-            if ((Original_Kayttooikeus.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Kayttooikeus.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Tehtava));
             }
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(TehtavaID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
@@ -3774,10 +3646,8 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyonte
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-
-        public virtual int Update(string Etunimi, string Sukunimi, string Kayttajatunnus, global::System.Nullable<int> Kayttooikeus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus, global::System.Nullable<int> Original_Kayttooikeus) {
-            return this.Update(Original_TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus, Original_TyontekijaID, Original_Etunimi, Original_Sukunimi, Original_Kayttajatunnus, Original_Kayttooikeus);
-
+        public virtual int Update(string Tehtava, int Original_TehtavaID, string Original_Tehtava) {
+            return this.Update(Tehtava, Original_TehtavaID, Original_Tehtava, Original_TehtavaID);
         }
     }
     
