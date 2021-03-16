@@ -408,7 +408,28 @@ namespace työaika
 
         private void btnRaportti_Click(object sender, RoutedEventArgs e)
         {
-            
+            var sfd = new SaveFileDialog();
+
+            sfd.Filter = "txt files (*.txt)|*.txt|CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            sfd.FilterIndex = 2;
+
+            Nullable<bool> dr = sfd.ShowDialog();
+            if(dr == true)
+            {
+                File.WriteAllText(sfd.FileName, ListViewToCSV(listViewRaportti).ToString(), Encoding.UTF8);
+            }
+        }
+
+        public static StringBuilder ListViewToCSV(ListView listView)
+        {
+            //make header string
+            StringBuilder result = new StringBuilder();
+            foreach(Tyoaika item in listView.Items)
+            {
+                result.AppendLine(item.CSVRiviksi());
+            }
+
+            return result;
         }
 
         private void listViewRaportti_Loaded(object sender, RoutedEventArgs e)
