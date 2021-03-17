@@ -1,0 +1,5 @@
+SELECT KirjausID, TyontekijaID, Kirjaus.KohdeID, Kirjaus.TehtavaID, Kohteet.Kohde, Tunnit, Kirjaus.Pvm, Vapaateksti, Kohteet.Kohde, Tehtavat.Tehtava
+
+FROM Kirjaus, Kohteet, Tehtavat
+
+WHERE (Pvm >= @alkuPvm) AND (Pvm <= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.KohdeID AND Tehtavat.TehtavaID = Kirjaus.TehtavaID
