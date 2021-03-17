@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProjektiConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProjektiConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tyoaika.Properties.Settings.GlobalReference.Default.ProjektiConnectionString2" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProjektiConnectionString4" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProjektiConnectionString4 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tyoaika.Properties.Settings.GlobalReference.Default.ProjektiConnectionString4" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KirjausTableAdapter" GeneratorDataComponentClassName="KirjausTableAdapter" Name="Kirjaus" UserDataComponentName="KirjausTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Kirjaus" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectName="Projekti.dbo.Kirjaus" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Kirjaus] WHERE (([KirjausID] = @Original_KirjausID) AND ((@IsNull_TyontekijaID = 1 AND [TyontekijaID] IS NULL) OR ([TyontekijaID] = @Original_TyontekijaID)) AND ([TehtavaID] = @Original_TehtavaID) AND ([KohdeID] = @Original_KohdeID) AND ([Tunnit] = @Original_Tunnit) AND ([Pvm] = @Original_Pvm) AND ((@IsNull_Vapaateksti = 1 AND [Vapaateksti] IS NULL) OR ([Vapaateksti] = @Original_Vapaateksti)))</CommandText>
@@ -82,14 +82,11 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
               <Mapping SourceColumn="Vapaateksti" DataSetColumn="Vapaateksti" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByDate" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByDate" GeneratorSourceName="FillByDate" GetMethodModifier="Public" GetMethodName="GetDataByDate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByDate" UserSourceName="FillByDate">
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByDate" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByDate" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByDate">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT KirjausID, TyontekijaID, Kirjaus.KohdeID, Kirjaus.TehtavaID, Kohteet.Kohde, Tunnit, Kirjaus.Pvm, Vapaateksti, Kohteet.Kohde, Tehtavat.Tehtava
 
-FROM Kirjaus, Kohteet, Tehtavat
-
-WHERE (Pvm &gt;= @alkuPvm) AND (Pvm &lt;= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.KohdeID AND Tehtavat.TehtavaID = Kirjaus.TehtavaID</CommandText>
+                    <CommandText>SELECT KirjausID, TyontekijaID, Kirjaus.KohdeID, Kirjaus.TehtavaID, Kohteet.Kohde, Tunnit, Kirjaus.Pvm, Vapaateksti, Kohteet.Kohde, Tehtavat.Tehtava FROM Kirjaus, Kohteet, Tehtavat WHERE (Pvm &gt;= @alkuPvm) AND (Pvm &lt;= @loppuPvm) AND Kohteet.KohdeID = Kirjaus.KohdeID AND Tehtavat.TehtavaID = Kirjaus.TehtavaID</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="alkuPvm" ColumnName="Pvm" DataSourceName="Projekti.dbo.Kirjaus" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@alkuPvm" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="loppuPvm" ColumnName="Pvm" DataSourceName="Projekti.dbo.Kirjaus" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@loppuPvm" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="Pvm" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -99,77 +96,12 @@ WHERE (Pvm &gt;= @alkuPvm) AND (Pvm &lt;= @loppuPvm) AND Kohteet.KohdeID = Kirja
               </DbSource>
             </Sources>
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TyontekijaTableAdapter" GeneratorDataComponentClassName="TyontekijaTableAdapter" Name="Tyontekija" UserDataComponentName="TyontekijaTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Tyontekija" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Tyontekija] WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ((@IsNull_Kayttooikeus = 1 AND [Kayttooikeus] IS NULL) OR ([Kayttooikeus] = @Original_Kayttooikeus)))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttajatunnus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttooikeus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttooikeus" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Kayttooikeus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttooikeus" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Tyontekija] ([Etunimi], [Sukunimi], [Kayttajatunnus], [Kayttooikeus]) VALUES (@Etunimi, @Sukunimi, @Kayttajatunnus, @Kayttooikeus);
-SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyontekija WHERE (TyontekijaID = SCOPE_IDENTITY())</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Kayttooikeus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttooikeus" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM dbo.Tyontekija</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Tyontekija] SET [Etunimi] = @Etunimi, [Sukunimi] = @Sukunimi, [Kayttajatunnus] = @Kayttajatunnus, [Kayttooikeus] = @Kayttooikeus WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ((@IsNull_Kayttooikeus = 1 AND [Kayttooikeus] IS NULL) OR ([Kayttooikeus] = @Original_Kayttooikeus)));
-SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Kayttooikeus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttooikeus" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttajatunnus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttooikeus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttooikeus" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Kayttooikeus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttooikeus" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="TyontekijaID" ColumnName="TyontekijaID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="TyontekijaID" DataSetColumn="TyontekijaID" />
-              <Mapping SourceColumn="Etunimi" DataSetColumn="Etunimi" />
-              <Mapping SourceColumn="Sukunimi" DataSetColumn="Sukunimi" />
-              <Mapping SourceColumn="Kayttajatunnus" DataSetColumn="Kayttajatunnus" />
-              <Mapping SourceColumn="Kayttooikeus" DataSetColumn="Kayttooikeus" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KohteetTableAdapter" GeneratorDataComponentClassName="KohteetTableAdapter" Name="Kohteet" UserDataComponentName="KohteetTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Kohteet" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectName="Projekti.dbo.Kohteet" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
+
                     <CommandText>DELETE FROM [dbo].[Kohteet] WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] = @Original_Kohde))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -179,6 +111,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Kayttooikeus FROM Tyonte
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
+
                     <CommandText>INSERT INTO [dbo].[Kohteet] ([Kohde]) VALUES (@Kohde);
 SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
@@ -188,12 +121,14 @@ SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = SCOPE_IDENTITY())</CommandTe
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
+
                     <CommandText>SELECT KohdeID, Kohde FROM dbo.Kohteet</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
+
                     <CommandText>UPDATE [dbo].[Kohteet] SET [Kohde] = @Kohde WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] = @Original_Kohde));
 SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = @KohdeID)</CommandText>
                     <Parameters>
@@ -207,14 +142,84 @@ SELECT KohdeID, Kohde FROM Kohteet WHERE (KohdeID = @KohdeID)</CommandText>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="KohdeID" DataSetColumn="KohdeID" />
-              <Mapping SourceColumn="Kohde" DataSetColumn="Kohde" />
+              <Mapping SourceColumn="TyontekijaID" DataSetColumn="TyontekijaID" />
+              <Mapping SourceColumn="Etunimi" DataSetColumn="Etunimi" />
+              <Mapping SourceColumn="Sukunimi" DataSetColumn="Sukunimi" />
+              <Mapping SourceColumn="Kayttajatunnus" DataSetColumn="Kayttajatunnus" />
+              <Mapping SourceColumn="Kayttooikeus" DataSetColumn="Kayttooikeus" />
+
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM [dbo].[Kohteet] WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] = @Original_Kohde))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_KohdeID" ColumnName="KohdeID" DataSourceName="Projekti.dbo.Kohteet" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Original_KohdeID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KohdeID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_Kohde" ColumnName="Kohde" DataSourceName="Projekti.dbo.Kohteet" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Original_Kohde" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Kohde" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LokiTableAdapter" GeneratorDataComponentClassName="LokiTableAdapter" Name="Loki" UserDataComponentName="LokiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectName="Projekti.dbo.Loki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Loki] WHERE (([LokiId] = @Original_LokiId) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ([Aikaleima] = @Original_Aikaleima))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_LokiId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LokiId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttajatunnus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Aikaleima" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Aikaleima" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Loki] ([Kayttajatunnus], [Aikaleima]) VALUES (@Kayttajatunnus, @Aikaleima);
+SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Aikaleima" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Aikaleima" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT LokiId, Kayttajatunnus, Aikaleima FROM dbo.Loki</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Loki] SET [Kayttajatunnus] = @Kayttajatunnus, [Aikaleima] = @Aikaleima WHERE (([LokiId] = @Original_LokiId) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)) AND ([Aikaleima] = @Original_Aikaleima));
+SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Aikaleima" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Aikaleima" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_LokiId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LokiId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttajatunnus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Aikaleima" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Aikaleima" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="LokiId" ColumnName="LokiId" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@LokiId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="LokiId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LokiId" DataSetColumn="LokiId" />
+              <Mapping SourceColumn="Kayttajatunnus" DataSetColumn="Kayttajatunnus" />
+              <Mapping SourceColumn="Aikaleima" DataSetColumn="Aikaleima" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TehtavatTableAdapter" GeneratorDataComponentClassName="TehtavatTableAdapter" Name="Tehtavat" UserDataComponentName="TehtavatTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProjektiConnectionString2 (Settings)" DbObjectName="Projekti.dbo.Tehtavat" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectName="Projekti.dbo.Tehtavat" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Tehtavat] WHERE (([TehtavaID] = @Original_TehtavaID) AND ([Tehtava] = @Original_Tehtava))</CommandText>
@@ -257,6 +262,79 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
               <Mapping SourceColumn="TehtavaID" DataSetColumn="TehtavaID" />
               <Mapping SourceColumn="Tehtava" DataSetColumn="Tehtava" />
             </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM [dbo].[Tehtavat] WHERE (([TehtavaID] = @Original_TehtavaID) AND ([Tehtava] = @Original_Tehtava))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_TehtavaID" ColumnName="TehtavaID" DataSourceName="Projekti.dbo.Tehtavat" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Original_TehtavaID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TehtavaID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_Tehtava" ColumnName="Tehtava" DataSourceName="Projekti.dbo.Tehtavat" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Original_Tehtava" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Tehtava" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TyontekijaTableAdapter" GeneratorDataComponentClassName="TyontekijaTableAdapter" Name="Tyontekija" UserDataComponentName="TyontekijaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProjektiConnectionString4 (Settings)" DbObjectName="Projekti.dbo.Tyontekija" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Tyontekija] WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttajatunnus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Tyontekija] ([TyontekijaID], [Etunimi], [Sukunimi], [Kayttajatunnus]) VALUES (@TyontekijaID, @Etunimi, @Sukunimi, @Kayttajatunnus);
+SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM dbo.Tyontekija</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Tyontekija] SET [TyontekijaID] = @TyontekijaID, [Etunimi] = @Etunimi, [Sukunimi] = @Sukunimi, [Kayttajatunnus] = @Kayttajatunnus WHERE (([TyontekijaID] = @Original_TyontekijaID) AND ([Etunimi] = @Original_Etunimi) AND ([Sukunimi] = @Original_Sukunimi) AND ((@IsNull_Kayttajatunnus = 1 AND [Kayttajatunnus] IS NULL) OR ([Kayttajatunnus] = @Original_Kayttajatunnus)));
+SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (TyontekijaID = @TyontekijaID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TyontekijaID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TyontekijaID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Etunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Etunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Sukunimi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Sukunimi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Kayttajatunnus" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Kayttajatunnus" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Kayttajatunnus" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TyontekijaID" DataSetColumn="TyontekijaID" />
+              <Mapping SourceColumn="Etunimi" DataSetColumn="Etunimi" />
+              <Mapping SourceColumn="Sukunimi" DataSetColumn="Sukunimi" />
+              <Mapping SourceColumn="Kayttajatunnus" DataSetColumn="Kayttajatunnus" />
+            </Mappings>
             <Sources />
           </TableAdapter>
         </Tables>
@@ -267,7 +345,7 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Kirjaus" msprop:Generator_TableClassName="KirjausDataTable" msprop:Generator_TableVarName="tableKirjaus" msprop:Generator_RowChangedName="KirjausRowChanged" msprop:Generator_TablePropName="Kirjaus" msprop:Generator_RowDeletingName="KirjausRowDeleting" msprop:Generator_RowChangingName="KirjausRowChanging" msprop:Generator_RowEvHandlerName="KirjausRowChangeEventHandler" msprop:Generator_RowDeletedName="KirjausRowDeleted" msprop:Generator_RowClassName="KirjausRow" msprop:Generator_UserTableName="Kirjaus" msprop:Generator_RowEvArgName="KirjausRowChangeEvent">
+        <xs:element name="Kirjaus" msprop:Generator_TableClassName="KirjausDataTable" msprop:Generator_TableVarName="tableKirjaus" msprop:Generator_TablePropName="Kirjaus" msprop:Generator_RowDeletingName="KirjausRowDeleting" msprop:Generator_RowChangingName="KirjausRowChanging" msprop:Generator_RowEvHandlerName="KirjausRowChangeEventHandler" msprop:Generator_RowDeletedName="KirjausRowDeleted" msprop:Generator_UserTableName="Kirjaus" msprop:Generator_RowChangedName="KirjausRowChanged" msprop:Generator_RowEvArgName="KirjausRowChangeEvent" msprop:Generator_RowClassName="KirjausRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="KirjausID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnKirjausID" msprop:Generator_ColumnPropNameInRow="KirjausID" msprop:Generator_ColumnPropNameInTable="KirjausIDColumn" msprop:Generator_UserColumnName="KirjausID" type="xs:int" />
@@ -286,10 +364,55 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tyontekija" msprop:Generator_TableClassName="TyontekijaDataTable" msprop:Generator_TableVarName="tableTyontekija" msprop:Generator_RowChangedName="TyontekijaRowChanged" msprop:Generator_TablePropName="Tyontekija" msprop:Generator_RowDeletingName="TyontekijaRowDeleting" msprop:Generator_RowChangingName="TyontekijaRowChanging" msprop:Generator_RowEvHandlerName="TyontekijaRowChangeEventHandler" msprop:Generator_RowDeletedName="TyontekijaRowDeleted" msprop:Generator_RowClassName="TyontekijaRow" msprop:Generator_UserTableName="Tyontekija" msprop:Generator_RowEvArgName="TyontekijaRowChangeEvent">
+        <xs:element name="Kohteet" msprop:Generator_TableClassName="KohteetDataTable" msprop:Generator_TableVarName="tableKohteet" msprop:Generator_TablePropName="Kohteet" msprop:Generator_RowDeletingName="KohteetRowDeleting" msprop:Generator_RowChangingName="KohteetRowChanging" msprop:Generator_RowEvHandlerName="KohteetRowChangeEventHandler" msprop:Generator_RowDeletedName="KohteetRowDeleted" msprop:Generator_UserTableName="Kohteet" msprop:Generator_RowChangedName="KohteetRowChanged" msprop:Generator_RowEvArgName="KohteetRowChangeEvent" msprop:Generator_RowClassName="KohteetRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TyontekijaID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTyontekijaID" msprop:Generator_ColumnPropNameInRow="TyontekijaID" msprop:Generator_ColumnPropNameInTable="TyontekijaIDColumn" msprop:Generator_UserColumnName="TyontekijaID" type="xs:int" />
+
+              <xs:element name="KohdeID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnKohdeID" msprop:Generator_ColumnPropNameInRow="KohdeID" msprop:Generator_ColumnPropNameInTable="KohdeIDColumn" msprop:Generator_UserColumnName="KohdeID" type="xs:int" />
+              <xs:element name="Kohde" msprop:Generator_ColumnVarNameInTable="columnKohde" msprop:Generator_ColumnPropNameInRow="Kohde" msprop:Generator_ColumnPropNameInTable="KohdeColumn" msprop:Generator_UserColumnName="Kohde">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Loki" msprop:Generator_TableClassName="LokiDataTable" msprop:Generator_TableVarName="tableLoki" msprop:Generator_TablePropName="Loki" msprop:Generator_RowDeletingName="LokiRowDeleting" msprop:Generator_RowChangingName="LokiRowChanging" msprop:Generator_RowEvHandlerName="LokiRowChangeEventHandler" msprop:Generator_RowDeletedName="LokiRowDeleted" msprop:Generator_UserTableName="Loki" msprop:Generator_RowChangedName="LokiRowChanged" msprop:Generator_RowEvArgName="LokiRowChangeEvent" msprop:Generator_RowClassName="LokiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LokiId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnLokiId" msprop:Generator_ColumnPropNameInRow="LokiId" msprop:Generator_ColumnPropNameInTable="LokiIdColumn" msprop:Generator_UserColumnName="LokiId" type="xs:int" />
+              <xs:element name="Kayttajatunnus" msprop:Generator_ColumnVarNameInTable="columnKayttajatunnus" msprop:Generator_ColumnPropNameInRow="Kayttajatunnus" msprop:Generator_ColumnPropNameInTable="KayttajatunnusColumn" msprop:Generator_UserColumnName="Kayttajatunnus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+
+              <xs:element name="Aikaleima" msprop:Generator_ColumnVarNameInTable="columnAikaleima" msprop:Generator_ColumnPropNameInRow="Aikaleima" msprop:Generator_ColumnPropNameInTable="AikaleimaColumn" msprop:Generator_UserColumnName="Aikaleima" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tehtavat" msprop:Generator_TableClassName="TehtavatDataTable" msprop:Generator_TableVarName="tableTehtavat" msprop:Generator_TablePropName="Tehtavat" msprop:Generator_RowDeletingName="TehtavatRowDeleting" msprop:Generator_RowChangingName="TehtavatRowChanging" msprop:Generator_RowEvHandlerName="TehtavatRowChangeEventHandler" msprop:Generator_RowDeletedName="TehtavatRowDeleted" msprop:Generator_UserTableName="Tehtavat" msprop:Generator_RowChangedName="TehtavatRowChanged" msprop:Generator_RowEvArgName="TehtavatRowChangeEvent" msprop:Generator_RowClassName="TehtavatRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TehtavaID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTehtavaID" msprop:Generator_ColumnPropNameInRow="TehtavaID" msprop:Generator_ColumnPropNameInTable="TehtavaIDColumn" msprop:Generator_UserColumnName="TehtavaID" type="xs:int" />
+              <xs:element name="Tehtava" msprop:Generator_ColumnVarNameInTable="columnTehtava" msprop:Generator_ColumnPropNameInRow="Tehtava" msprop:Generator_ColumnPropNameInTable="TehtavaColumn" msprop:Generator_UserColumnName="Tehtava">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tyontekija" msprop:Generator_TableClassName="TyontekijaDataTable" msprop:Generator_TableVarName="tableTyontekija" msprop:Generator_TablePropName="Tyontekija" msprop:Generator_RowDeletingName="TyontekijaRowDeleting" msprop:Generator_RowChangingName="TyontekijaRowChanging" msprop:Generator_RowEvHandlerName="TyontekijaRowChangeEventHandler" msprop:Generator_RowDeletedName="TyontekijaRowDeleted" msprop:Generator_UserTableName="Tyontekija" msprop:Generator_RowChangedName="TyontekijaRowChanged" msprop:Generator_RowEvArgName="TyontekijaRowChangeEvent" msprop:Generator_RowClassName="TyontekijaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TyontekijaID" msprop:Generator_ColumnVarNameInTable="columnTyontekijaID" msprop:Generator_ColumnPropNameInRow="TyontekijaID" msprop:Generator_ColumnPropNameInTable="TyontekijaIDColumn" msprop:Generator_UserColumnName="TyontekijaID" type="xs:int" />
               <xs:element name="Etunimi" msprop:Generator_ColumnVarNameInTable="columnEtunimi" msprop:Generator_ColumnPropNameInRow="Etunimi" msprop:Generator_ColumnPropNameInTable="EtunimiColumn" msprop:Generator_UserColumnName="Etunimi">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -304,36 +427,8 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+
               <xs:element name="Kayttajatunnus" msprop:Generator_ColumnVarNameInTable="columnKayttajatunnus" msprop:Generator_ColumnPropNameInRow="Kayttajatunnus" msprop:Generator_ColumnPropNameInTable="KayttajatunnusColumn" msprop:Generator_UserColumnName="Kayttajatunnus" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Kayttooikeus" msprop:Generator_ColumnVarNameInTable="columnKayttooikeus" msprop:Generator_ColumnPropNameInRow="Kayttooikeus" msprop:Generator_ColumnPropNameInTable="KayttooikeusColumn" msprop:Generator_UserColumnName="Kayttooikeus" type="xs:int" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Kohteet" msprop:Generator_TableClassName="KohteetDataTable" msprop:Generator_TableVarName="tableKohteet" msprop:Generator_RowChangedName="KohteetRowChanged" msprop:Generator_TablePropName="Kohteet" msprop:Generator_RowDeletingName="KohteetRowDeleting" msprop:Generator_RowChangingName="KohteetRowChanging" msprop:Generator_RowEvHandlerName="KohteetRowChangeEventHandler" msprop:Generator_RowDeletedName="KohteetRowDeleted" msprop:Generator_RowClassName="KohteetRow" msprop:Generator_UserTableName="Kohteet" msprop:Generator_RowEvArgName="KohteetRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="KohdeID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnKohdeID" msprop:Generator_ColumnPropNameInRow="KohdeID" msprop:Generator_ColumnPropNameInTable="KohdeIDColumn" msprop:Generator_UserColumnName="KohdeID" type="xs:int" />
-              <xs:element name="Kohde" msprop:Generator_ColumnVarNameInTable="columnKohde" msprop:Generator_ColumnPropNameInRow="Kohde" msprop:Generator_ColumnPropNameInTable="KohdeColumn" msprop:Generator_UserColumnName="Kohde">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Tehtavat" msprop:Generator_TableClassName="TehtavatDataTable" msprop:Generator_TableVarName="tableTehtavat" msprop:Generator_RowChangedName="TehtavatRowChanged" msprop:Generator_TablePropName="Tehtavat" msprop:Generator_RowDeletingName="TehtavatRowDeleting" msprop:Generator_RowChangingName="TehtavatRowChanging" msprop:Generator_RowEvHandlerName="TehtavatRowChangeEventHandler" msprop:Generator_RowDeletedName="TehtavatRowDeleted" msprop:Generator_RowClassName="TehtavatRow" msprop:Generator_UserTableName="Tehtavat" msprop:Generator_RowEvArgName="TehtavatRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="TehtavaID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTehtavaID" msprop:Generator_ColumnPropNameInRow="TehtavaID" msprop:Generator_ColumnPropNameInTable="TehtavaIDColumn" msprop:Generator_UserColumnName="TehtavaID" type="xs:int" />
-              <xs:element name="Tehtava" msprop:Generator_ColumnVarNameInTable="columnTehtava" msprop:Generator_ColumnPropNameInRow="Tehtava" msprop:Generator_ColumnPropNameInTable="TehtavaColumn" msprop:Generator_UserColumnName="Tehtava">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -349,24 +444,28 @@ SELECT TehtavaID, Tehtava FROM Tehtavat WHERE (TehtavaID = @TehtavaID)</CommandT
       <xs:selector xpath=".//mstns:Kirjaus" />
       <xs:field xpath="mstns:KirjausID" />
     </xs:unique>
-    <xs:unique name="Tyontekija_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Tyontekija" />
-      <xs:field xpath="mstns:TyontekijaID" />
-    </xs:unique>
     <xs:unique name="Kohteet_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Kohteet" />
       <xs:field xpath="mstns:KohdeID" />
+    </xs:unique>
+    <xs:unique name="Loki_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Loki" />
+      <xs:field xpath="mstns:LokiId" />
     </xs:unique>
     <xs:unique name="Tehtavat_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Tehtavat" />
       <xs:field xpath="mstns:TehtavaID" />
     </xs:unique>
+    <xs:unique name="Tyontekija_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Tyontekija" />
+      <xs:field xpath="mstns:TyontekijaID" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Kirjaus_Kohde" msdata:parent="Kohteet" msdata:child="Kirjaus" msdata:parentkey="KohdeID" msdata:childkey="KohdeID" msprop:Generator_UserChildTable="Kirjaus" msprop:Generator_ChildPropName="GetKirjausRows" msprop:Generator_UserRelationName="FK_Kirjaus_Kohde" msprop:Generator_ParentPropName="KohteetRow" msprop:Generator_RelationVarName="relationFK_Kirjaus_Kohde" msprop:Generator_UserParentTable="Kohteet" />
-      <msdata:Relationship name="FK_Kirjaus_Tehtavat" msdata:parent="Tehtavat" msdata:child="Kirjaus" msdata:parentkey="TehtavaID" msdata:childkey="TehtavaID" msprop:Generator_UserChildTable="Kirjaus" msprop:Generator_ChildPropName="GetKirjausRows" msprop:Generator_UserRelationName="FK_Kirjaus_Tehtavat" msprop:Generator_ParentPropName="TehtavatRow" msprop:Generator_RelationVarName="relationFK_Kirjaus_Tehtavat" msprop:Generator_UserParentTable="Tehtavat" />
-      <msdata:Relationship name="FK_Kirjaus_Tyontekija" msdata:parent="Tyontekija" msdata:child="Kirjaus" msdata:parentkey="TyontekijaID" msdata:childkey="TyontekijaID" msprop:Generator_UserChildTable="Kirjaus" msprop:Generator_ChildPropName="GetKirjausRows" msprop:Generator_UserRelationName="FK_Kirjaus_Tyontekija" msprop:Generator_ParentPropName="TyontekijaRow" msprop:Generator_RelationVarName="relationFK_Kirjaus_Tyontekija" msprop:Generator_UserParentTable="Tyontekija" />
+      <msdata:Relationship name="FK_Kirjaus_Kohde" msdata:parent="Kohteet" msdata:child="Kirjaus" msdata:parentkey="KohdeID" msdata:childkey="KohdeID" msprop:Generator_UserChildTable="Kirjaus" msprop:Generator_ChildPropName="GetKirjausRows" msprop:Generator_UserRelationName="FK_Kirjaus_Kohde" msprop:Generator_RelationVarName="relationFK_Kirjaus_Kohde" msprop:Generator_UserParentTable="Kohteet" msprop:Generator_ParentPropName="KohteetRow" />
+      <msdata:Relationship name="FK_Kirjaus_Tehtavat" msdata:parent="Tehtavat" msdata:child="Kirjaus" msdata:parentkey="TehtavaID" msdata:childkey="TehtavaID" msprop:Generator_UserChildTable="Kirjaus" msprop:Generator_ChildPropName="GetKirjausRows" msprop:Generator_UserRelationName="FK_Kirjaus_Tehtavat" msprop:Generator_RelationVarName="relationFK_Kirjaus_Tehtavat" msprop:Generator_UserParentTable="Tehtavat" msprop:Generator_ParentPropName="TehtavatRow" />
+      <msdata:Relationship name="FK_Kirjaus_Tyontekija" msdata:parent="Tyontekija" msdata:child="Kirjaus" msdata:parentkey="TyontekijaID" msdata:childkey="TyontekijaID" msprop:Generator_UserChildTable="Kirjaus" msprop:Generator_ChildPropName="GetKirjausRows" msprop:Generator_UserRelationName="FK_Kirjaus_Tyontekija" msprop:Generator_RelationVarName="relationFK_Kirjaus_Tyontekija" msprop:Generator_UserParentTable="Tyontekija" msprop:Generator_ParentPropName="TyontekijaRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
