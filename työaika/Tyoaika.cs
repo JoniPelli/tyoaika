@@ -21,5 +21,11 @@ namespace tyoaika
         {
             stringPvm = Pvm.Day + "." + Pvm.Month + "." + Pvm.Year;
         }
+
+        public string CSVRiviksi()
+        {
+            paivaysMerkkijoniksi();
+            return stringPvm + ";" + Tehtava + ";" + Kohde + ";" + Tunnit + ";" + Vapaateksti;
+        }
     }
 }

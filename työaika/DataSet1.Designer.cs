@@ -125,9 +125,11 @@ namespace tyoaika {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+
         public LokiDataTable Loki {
             get {
                 return this.tableLoki;
+
             }
         }
         
@@ -135,9 +137,9 @@ namespace tyoaika {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TehtavatDataTable Tehtavat {
+        public TyontekijaDataTable Tyontekija {
             get {
-                return this.tableTehtavat;
+                return this.tableTyontekija;
             }
         }
         
@@ -347,13 +349,15 @@ namespace tyoaika {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
         private bool ShouldSerializeLoki() {
+
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeTehtavat() {
+        private bool ShouldSerializeTyontekija() {
             return false;
         }
         
@@ -423,9 +427,11 @@ namespace tyoaika {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void KohteetRowChangeEventHandler(object sender, KohteetRowChangeEvent e);
+
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void LokiRowChangeEventHandler(object sender, LokiRowChangeEvent e);
+
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void TehtavatRowChangeEventHandler(object sender, TehtavatRowChangeEvent e);
@@ -1076,6 +1082,7 @@ namespace tyoaika {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+
         public partial class LokiDataTable : global::System.Data.TypedTableBase<LokiRow> {
             
             private global::System.Data.DataColumn columnLokiId;
@@ -1088,6 +1095,7 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public LokiDataTable() {
                 this.TableName = "Loki";
+
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1095,7 +1103,9 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             internal LokiDataTable(global::System.Data.DataTable table) {
+
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1112,21 +1122,26 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             protected LokiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public global::System.Data.DataColumn LokiIdColumn {
                 get {
                     return this.columnLokiId;
+
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public global::System.Data.DataColumn KayttajatunnusColumn {
                 get {
                     return this.columnKayttajatunnus;
@@ -1138,6 +1153,7 @@ namespace tyoaika {
             public global::System.Data.DataColumn AikaleimaColumn {
                 get {
                     return this.columnAikaleima;
+
                 }
             }
             
@@ -1152,13 +1168,16 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public LokiRow this[int index] {
                 get {
                     return ((LokiRow)(this.Rows[index]));
+
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public event LokiRowChangeEventHandler LokiRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1173,11 +1192,13 @@ namespace tyoaika {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddLokiRow(LokiRow row) {
+
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public LokiRow AddLokiRow(string Kayttajatunnus, System.DateTime Aikaleima) {
                 LokiRow rowLokiRow = ((LokiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1187,19 +1208,24 @@ namespace tyoaika {
                 rowLokiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLokiRow);
                 return rowLokiRow;
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public LokiRow FindByLokiId(int LokiId) {
                 return ((LokiRow)(this.Rows.Find(new object[] {
                             LokiId})));
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
+
                 LokiDataTable cln = ((LokiDataTable)(base.Clone()));
+
                 cln.InitVars();
                 return cln;
             }
@@ -1207,20 +1233,25 @@ namespace tyoaika {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
+
                 return new LokiDataTable();
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
+
                 this.columnLokiId = base.Columns["LokiId"];
                 this.columnKayttajatunnus = base.Columns["Kayttajatunnus"];
                 this.columnAikaleima = base.Columns["Aikaleima"];
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
+
                 this.columnLokiId = new global::System.Data.DataColumn("LokiId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLokiId);
                 this.columnKayttajatunnus = new global::System.Data.DataColumn("Kayttajatunnus", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1237,32 +1268,41 @@ namespace tyoaika {
                 this.columnLokiId.Unique = true;
                 this.columnKayttajatunnus.MaxLength = 50;
                 this.columnAikaleima.AllowDBNull = false;
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public LokiRow NewLokiRow() {
                 return ((LokiRow)(this.NewRow()));
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+
                 return new LokiRow(builder);
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
+
                 return typeof(LokiRow);
+
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
+
                 if ((this.LokiRowChanged != null)) {
                     this.LokiRowChanged(this, new LokiRowChangeEvent(((LokiRow)(e.Row)), e.Action));
+
                 }
             }
             
@@ -1270,8 +1310,10 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
+
                 if ((this.LokiRowChanging != null)) {
                     this.LokiRowChanging(this, new LokiRowChangeEvent(((LokiRow)(e.Row)), e.Action));
+
                 }
             }
             
@@ -1279,6 +1321,7 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
+
                 if ((this.LokiRowDeleted != null)) {
                     this.LokiRowDeleted(this, new LokiRowChangeEvent(((LokiRow)(e.Row)), e.Action));
                 }
@@ -1288,6 +1331,7 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
+
                 if ((this.LokiRowDeleting != null)) {
                     this.LokiRowDeleting(this, new LokiRowChangeEvent(((LokiRow)(e.Row)), e.Action));
                 }
@@ -1295,6 +1339,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public void RemoveLokiRow(LokiRow row) {
                 this.Rows.Remove(row);
             }
@@ -1322,6 +1367,7 @@ namespace tyoaika {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
+
                 attribute2.FixedValue = "LokiDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
@@ -1368,16 +1414,18 @@ namespace tyoaika {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TehtavatDataTable : global::System.Data.TypedTableBase<TehtavatRow> {
+        public partial class TyontekijaDataTable : global::System.Data.TypedTableBase<TyontekijaRow> {
             
-            private global::System.Data.DataColumn columnTehtavaID;
+            private global::System.Data.DataColumn columnTyontekijaID;
             
-            private global::System.Data.DataColumn columnTehtava;
+            private global::System.Data.DataColumn columnEtunimi;
+            
+            private global::System.Data.DataColumn columnSukunimi;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TehtavatDataTable() {
-                this.TableName = "Tehtavat";
+            public TyontekijaDataTable() {
+                this.TableName = "Tyontekija";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1385,7 +1433,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal TehtavatDataTable(global::System.Data.DataTable table) {
+            internal TyontekijaDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1402,24 +1450,32 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected TehtavatDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TyontekijaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TehtavaIDColumn {
+            public global::System.Data.DataColumn TyontekijaIDColumn {
                 get {
-                    return this.columnTehtavaID;
+                    return this.columnTyontekijaID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TehtavaColumn {
+            public global::System.Data.DataColumn EtunimiColumn {
                 get {
-                    return this.columnTehtava;
+                    return this.columnEtunimi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SukunimiColumn {
+                get {
+                    return this.columnSukunimi;
                 }
             }
             
@@ -1434,32 +1490,33 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TehtavatRow this[int index] {
+            public TyontekijaRow this[int index] {
                 get {
-                    return ((TehtavatRow)(this.Rows[index]));
+                    return ((TyontekijaRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TehtavatRowChangeEventHandler TehtavatRowChanging;
+            public event TyontekijaRowChangeEventHandler TyontekijaRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TehtavatRowChangeEventHandler TehtavatRowChanged;
+            public event TyontekijaRowChangeEventHandler TyontekijaRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TehtavatRowChangeEventHandler TehtavatRowDeleting;
+            public event TyontekijaRowChangeEventHandler TyontekijaRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TehtavatRowChangeEventHandler TehtavatRowDeleted;
+            public event TyontekijaRowChangeEventHandler TyontekijaRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddTehtavatRow(TehtavatRow row) {
+            public void AddTyontekijaRow(TyontekijaRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public TehtavatRow AddTehtavatRow(string Tehtava) {
                 TehtavatRow rowTehtavatRow = ((TehtavatRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1472,15 +1529,15 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TehtavatRow FindByTehtavaID(int TehtavaID) {
-                return ((TehtavatRow)(this.Rows.Find(new object[] {
-                            TehtavaID})));
+            public TyontekijaRow FindByTyontekijaID(int TyontekijaID) {
+                return ((TyontekijaRow)(this.Rows.Find(new object[] {
+                            TyontekijaID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                TehtavatDataTable cln = ((TehtavatDataTable)(base.Clone()));
+                TyontekijaDataTable cln = ((TyontekijaDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1488,12 +1545,13 @@ namespace tyoaika {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new TehtavatDataTable();
+                return new TyontekijaDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
+
                 this.columnTehtavaID = base.Columns["TehtavaID"];
                 this.columnTehtava = base.Columns["Tehtava"];
             }
@@ -1501,6 +1559,7 @@ namespace tyoaika {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
+
                 this.columnTehtavaID = new global::System.Data.DataColumn("TehtavaID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTehtavaID);
                 this.columnTehtava = new global::System.Data.DataColumn("Tehtava", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1519,28 +1578,28 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TehtavatRow NewTehtavatRow() {
-                return ((TehtavatRow)(this.NewRow()));
+            public TyontekijaRow NewTyontekijaRow() {
+                return ((TyontekijaRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TehtavatRow(builder);
+                return new TyontekijaRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(TehtavatRow);
+                return typeof(TyontekijaRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TehtavatRowChanged != null)) {
-                    this.TehtavatRowChanged(this, new TehtavatRowChangeEvent(((TehtavatRow)(e.Row)), e.Action));
+                if ((this.TyontekijaRowChanged != null)) {
+                    this.TyontekijaRowChanged(this, new TyontekijaRowChangeEvent(((TyontekijaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1548,8 +1607,8 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TehtavatRowChanging != null)) {
-                    this.TehtavatRowChanging(this, new TehtavatRowChangeEvent(((TehtavatRow)(e.Row)), e.Action));
+                if ((this.TyontekijaRowChanging != null)) {
+                    this.TyontekijaRowChanging(this, new TyontekijaRowChangeEvent(((TyontekijaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1557,8 +1616,8 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TehtavatRowDeleted != null)) {
-                    this.TehtavatRowDeleted(this, new TehtavatRowChangeEvent(((TehtavatRow)(e.Row)), e.Action));
+                if ((this.TyontekijaRowDeleted != null)) {
+                    this.TyontekijaRowDeleted(this, new TyontekijaRowChangeEvent(((TyontekijaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1566,14 +1625,14 @@ namespace tyoaika {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TehtavatRowDeleting != null)) {
-                    this.TehtavatRowDeleting(this, new TehtavatRowChangeEvent(((TehtavatRow)(e.Row)), e.Action));
+                if ((this.TyontekijaRowDeleting != null)) {
+                    this.TyontekijaRowDeleting(this, new TyontekijaRowChangeEvent(((TyontekijaRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveTehtavatRow(TehtavatRow row) {
+            public void RemoveTyontekijaRow(TyontekijaRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1600,7 +1659,7 @@ namespace tyoaika {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TehtavatDataTable";
+                attribute2.FixedValue = "TyontekijaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1784,6 +1843,7 @@ namespace tyoaika {
                 cln.InitVars();
                 return cln;
             }
+
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1824,6 +1884,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public TyontekijaRow NewTyontekijaRow() {
                 return ((TyontekijaRow)(this.NewRow()));
             }
@@ -1851,6 +1912,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.TyontekijaRowChanging != null)) {
@@ -1869,6 +1931,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.TyontekijaRowDeleting != null)) {
@@ -1949,6 +2012,7 @@ namespace tyoaika {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+
         public partial class KirjausRow : global::System.Data.DataRow {
             
             private KirjausDataTable tableKirjaus;
@@ -1962,6 +2026,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public int KirjausID {
                 get {
                     return ((int)(this[this.tableKirjaus.KirjausIDColumn]));
@@ -1973,6 +2038,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public int TyontekijaID {
                 get {
                     try {
@@ -1989,6 +2055,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public int TehtavaID {
                 get {
                     return ((int)(this[this.tableKirjaus.TehtavaIDColumn]));
@@ -2011,6 +2078,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public int Tunnit {
                 get {
                     return ((int)(this[this.tableKirjaus.TunnitColumn]));
@@ -2257,11 +2325,11 @@ namespace tyoaika {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public KirjausRow[] GetKirjausRows() {
-                if ((this.Table.ChildRelations["FK_Kirjaus_Tehtavat"] == null)) {
+                if ((this.Table.ChildRelations["FK_Kirjaus_Tyontekija"] == null)) {
                     return new KirjausRow[0];
                 }
                 else {
-                    return ((KirjausRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Kirjaus_Tehtavat"])));
+                    return ((KirjausRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Kirjaus_Tyontekija"])));
                 }
             }
         }
@@ -2357,6 +2425,7 @@ namespace tyoaika {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
         public class KirjausRowChangeEvent : global::System.EventArgs {
             
             private KirjausRow eventRow;
@@ -2365,6 +2434,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public KirjausRowChangeEvent(KirjausRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
@@ -2372,6 +2442,7 @@ namespace tyoaika {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
             public KirjausRow Row {
                 get {
                     return this.eventRow;
@@ -2391,22 +2462,22 @@ namespace tyoaika {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class KohteetRowChangeEvent : global::System.EventArgs {
+        public class TehtavatRowChangeEvent : global::System.EventArgs {
             
-            private KohteetRow eventRow;
+            private TehtavatRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public KohteetRowChangeEvent(KohteetRow row, global::System.Data.DataRowAction action) {
+            public TehtavatRowChangeEvent(TehtavatRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public KohteetRow Row {
+            public TehtavatRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2909,6 +2980,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(global::System.Nullable<int> TyontekijaID, int TehtavaID, int KohdeID, int Tunnit, System.DateTime Pvm, string Vapaateksti, int Original_KirjausID, global::System.Nullable<int> Original_TyontekijaID, int Original_TehtavaID, int Original_KohdeID, int Original_Tunnit, System.DateTime Original_Pvm, string Original_Vapaateksti, int KirjausID) {
@@ -3128,6 +3200,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
+
             this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString4;
         }
         
@@ -3141,6 +3214,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
+
             this._commandCollection[1].CommandText = "DELETE FROM [dbo].[Kohteet] WHERE (([KohdeID] = @Original_KohdeID) AND ([Kohde] =" +
                 " @Original_Kohde))";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
@@ -3339,6 +3413,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+
     public partial class LokiTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -3353,6 +3428,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+
         public LokiTableAdapter() {
             this.ClearBeforeFill = true;
         }
@@ -3450,6 +3526,7 @@ SELECT KirjausID, TyontekijaID, TehtavaID, KohdeID, Tunnit, Pvm, Vapaateksti FRO
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
+
             tableMapping.DataSetTable = "Loki";
             tableMapping.ColumnMappings.Add("LokiId", "LokiId");
             tableMapping.ColumnMappings.Add("Kayttajatunnus", "Kayttajatunnus");
@@ -3491,6 +3568,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
+
             this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString4;
         }
         
@@ -3500,6 +3578,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
+
             this._commandCollection[0].CommandText = "SELECT LokiId, Kayttajatunnus, Aikaleima FROM dbo.Loki";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -3508,6 +3587,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+
         public virtual int Fill(DataSet1.LokiDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
@@ -3521,6 +3601,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+
         public virtual DataSet1.LokiDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             DataSet1.LokiDataTable dataTable = new DataSet1.LokiDataTable();
@@ -3531,6 +3612,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+
         public virtual int Update(DataSet1.LokiDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
@@ -3539,6 +3621,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(DataSet1 dataSet) {
+
             return this.Adapter.Update(dataSet, "Loki");
         }
         
@@ -3561,6 +3644,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+
         public virtual int Delete(int Original_LokiId, string Original_Kayttajatunnus, System.DateTime Original_Aikaleima) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_LokiId));
             if ((Original_Kayttajatunnus == null)) {
@@ -3592,6 +3676,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+
         public virtual int Insert(string Kayttajatunnus, System.DateTime Aikaleima) {
             if ((Kayttajatunnus == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -3620,6 +3705,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+
         public virtual int Update(string Kayttajatunnus, System.DateTime Aikaleima, int Original_LokiId, string Original_Kayttajatunnus, System.DateTime Original_Aikaleima, int LokiId) {
             if ((Kayttajatunnus == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -3659,6 +3745,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+
         public virtual int Update(string Kayttajatunnus, System.DateTime Aikaleima, int Original_LokiId, string Original_Kayttajatunnus, System.DateTime Original_Aikaleima) {
             return this.Update(Kayttajatunnus, Aikaleima, Original_LokiId, Original_Kayttajatunnus, Original_Aikaleima, Original_LokiId);
         }
@@ -3817,6 +3904,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
+
             this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString4;
         }
         
@@ -3986,6 +4074,7 @@ SELECT LokiId, Kayttajatunnus, Aikaleima FROM Loki WHERE (LokiId = @LokiId)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Tehtava, int Original_TehtavaID, string Original_Tehtava) {
             return this.Update(Tehtava, Original_TehtavaID, Original_Tehtava, Original_TehtavaID);
+
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4177,12 +4266,14 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sukunimi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sukunimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kayttajatunnus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kayttajatunnus", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kayttajatunnus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
+
             this._connection.ConnectionString = global::tyoaika.Properties.Settings.Default.ProjektiConnectionString4;
         }
         
@@ -4192,6 +4283,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
+
             this._commandCollection[0].CommandText = "SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM dbo.Tyontekija";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -4253,6 +4345,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+
         public virtual int Delete(int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_TyontekijaID));
             if ((Original_Etunimi == null)) {
@@ -4295,6 +4388,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+
         public virtual int Insert(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(TyontekijaID));
             if ((Etunimi == null)) {
@@ -4335,6 +4429,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+
         public virtual int Update(int TyontekijaID, string Etunimi, string Sukunimi, string Kayttajatunnus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(TyontekijaID));
             if ((Etunimi == null)) {
@@ -4360,12 +4455,14 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
                 throw new global::System.ArgumentNullException("Original_Etunimi");
             }
             else {
+
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Etunimi));
             }
             if ((Original_Sukunimi == null)) {
                 throw new global::System.ArgumentNullException("Original_Sukunimi");
             }
             else {
+
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Sukunimi));
             }
             if ((Original_Kayttajatunnus == null)) {
@@ -4373,6 +4470,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
+
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Kayttajatunnus));
             }
@@ -4396,6 +4494,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+
         public virtual int Update(string Etunimi, string Sukunimi, string Kayttajatunnus, int Original_TyontekijaID, string Original_Etunimi, string Original_Sukunimi, string Original_Kayttajatunnus) {
             return this.Update(Original_TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus, Original_TyontekijaID, Original_Etunimi, Original_Sukunimi, Original_Kayttajatunnus);
         }
@@ -4471,6 +4570,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
+
         public LokiTableAdapter LokiTableAdapter {
             get {
                 return this._lokiTableAdapter;
@@ -4485,12 +4585,12 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public TehtavatTableAdapter TehtavatTableAdapter {
+        public TyontekijaTableAdapter TyontekijaTableAdapter {
             get {
-                return this._tehtavatTableAdapter;
+                return this._tyontekijaTableAdapter;
             }
             set {
-                this._tehtavatTableAdapter = value;
+                this._tyontekijaTableAdapter = value;
             }
         }
         
@@ -4564,6 +4664,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
                     count = (count + 1);
                 }
                 if ((this._kohteetTableAdapter != null)) {
+
                     count = (count + 1);
                 }
                 if ((this._lokiTableAdapter != null)) {
@@ -4777,6 +4878,7 @@ SELECT TyontekijaID, Etunimi, Sukunimi, Kayttajatunnus FROM Tyontekija WHERE (Ty
             }
             if (((this._kohteetTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._kohteetTableAdapter.Connection) == false))) {
+
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
