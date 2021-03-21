@@ -109,7 +109,6 @@ namespace työaika
             }
         }
 
-
         private void btnKohdeLisaa_Click(object sender, RoutedEventArgs e)
         {
             DataSet1 ds = new DataSet1();
@@ -137,6 +136,7 @@ namespace työaika
 
         private void btnKohdePoista_Click(object sender, RoutedEventArgs e)
         {
+            //Marjolle hommia
             if (listViewKohde.SelectedItem != null)
             {
                 DataSet1 ds = new DataSet1();
@@ -147,7 +147,6 @@ namespace työaika
                 adap.Update(ds.Kohteet);
                 HaeDataKohde();
             }
-        
         }
 
         private void btnRiviLisaa_Click(object sender, RoutedEventArgs e)
@@ -274,7 +273,7 @@ namespace työaika
             }
             else
             {
-                //this.tabAsetukset.Visibility = Visibility.Hidden;
+                this.tabAsetukset.Visibility = Visibility.Hidden;
             }
 
 
@@ -456,7 +455,7 @@ namespace työaika
 
         }
 
-        private bool kiellettySana(String sana)
+        private void listViewRaportti_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
 
