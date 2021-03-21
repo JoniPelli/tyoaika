@@ -97,6 +97,16 @@ namespace työaika
         private void btnTehtavaPoista_Click(object sender, RoutedEventArgs e)
         {
             //Marjolle hommia
+            if (listViewTehtavat.SelectedItem != null)
+            {
+                DataSet1 ds = new DataSet1();
+                TehtavatTableAdapter adap = new TehtavatTableAdapter();
+                adap.Fill(ds.Tehtavat);
+                Tehtavat item = (Tehtavat)listViewTehtavat.SelectedItem;
+                adap.DeleteQuery(item.TehtavatId, item.Tehtava);
+                adap.Update(ds.Tehtavat);
+                HaeDataTehtavat();
+            }
         }
 
         private void btnKohdeLisaa_Click(object sender, RoutedEventArgs e)
@@ -127,6 +137,16 @@ namespace työaika
         private void btnKohdePoista_Click(object sender, RoutedEventArgs e)
         {
             //Marjolle hommia
+            if (listViewKohde.SelectedItem != null)
+            {
+                DataSet1 ds = new DataSet1();
+                KohteetTableAdapter adap = new KohteetTableAdapter();
+                adap.Fill(ds.Kohteet);
+                Kohteet item = (Kohteet)listViewKohde.SelectedItem;
+                adap.DeleteQuery(item.KohdeID, item.Kohde);
+                adap.Update(ds.Kohteet);
+                HaeDataKohde();
+            }
         }
 
         private void btnRiviLisaa_Click(object sender, RoutedEventArgs e)
