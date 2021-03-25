@@ -181,6 +181,7 @@ namespace työaika
                 //lisätään Tyoaika-olio tyoaika kokoelmaan
                 tyoaika.Add(t);
             }
+            this.textBoxVapaateksti.Text = string.Empty;
         }
 
         private void btnRiviPoista_Click(object sender, RoutedEventArgs e)
@@ -231,6 +232,7 @@ namespace työaika
             //Tyhjentää lopuksi listanäkymän ja työaika -olio
             this.listViewRivi.Items.Clear();
             tyoaika.Clear();
+            
         }
 
         private void btnRiviTyhjenna_Click(object sender, RoutedEventArgs e)
@@ -460,5 +462,7 @@ namespace työaika
 
 
         }
+
+       
     }
 }
