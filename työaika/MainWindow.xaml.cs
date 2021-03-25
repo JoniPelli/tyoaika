@@ -158,7 +158,7 @@ namespace työaika
                 MessageBox.Show("Päivämäärä on tyhjä.", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             //Etsitään SQL komentoja tietokantaan lisättävästä rivistä
-            if (kiellettySana(vteksti) == true)
+            else if (kiellettySana(vteksti) == true)
             {
                 MessageBox.Show("Sisältää SQL komentoja, korjaa vapaateksti");
             }
