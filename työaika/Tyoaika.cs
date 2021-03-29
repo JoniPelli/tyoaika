@@ -17,10 +17,16 @@ namespace tyoaika
         public int KohdeID { get; set; }
         public string Kohde { get; set; }
         public string Vapaateksti { get; set; }
+
+
+        // Muuttaa DateTimen muotoon dd.mm.yyyy
+
         public void paivaysMerkkijoniksi()
         {
             stringPvm = Pvm.Day + "." + Pvm.Month + "." + Pvm.Year;
         }
+
+        // Lisätään erotinmerkit tallennettavaan tiedostoon, jotta yhteensopiva Exceliin
 
         public string CSVRiviksi()
         {

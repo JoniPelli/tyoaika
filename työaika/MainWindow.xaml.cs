@@ -40,19 +40,11 @@ namespace työaika
 
         private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
 
-        //private Kanta kanta = new Kanta("Data Source = LANKKU\\SQLEXPRESS; Initial Catalog = Projekti; Integrated Security = True");
-
-        //public SqlConnection conn = new SqlConnection("Data Source=BLACKBOX\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Security=True");
 
         public MainWindow()
         {
             InitializeComponent();
-            /*if (kanta.luoYhteys())
-            {
-                //MessageBox.Show("Onnistu");
-            }
-            */
-            //Lisätään ComboBoxTunnit numerot 1-24
+            
             for (int i = 1; i < 25; i++)
             {
                 this.comboBoxTunnit.Items.Add(i);
@@ -96,16 +88,27 @@ namespace työaika
 
         private void btnTehtavaPoista_Click(object sender, RoutedEventArgs e)
         {
-            //Marjolle hommia
             if (listViewTehtavat.SelectedItem != null)
             {
-                DataSet1 ds = new DataSet1();
-                TehtavatTableAdapter adap = new TehtavatTableAdapter();
-                adap.Fill(ds.Tehtavat);
                 Tehtavat item = (Tehtavat)listViewTehtavat.SelectedItem;
-                adap.DeleteQuery(item.TehtavatId, item.Tehtava);
-                adap.Update(ds.Tehtavat);
-                HaeDataTehtavat();
+
+                DataSet1 ds = new DataSet1();
+                KirjausTableAdapter adapKirjaus = new KirjausTableAdapter();
+                adapKirjaus.FillBy(ds.Kirjaus, item.TehtavatId);
+                if (ds.Tables["Kirjaus"].Rows.Count > 0)
+                {
+                    MessageBox.Show("Tehtävällä on kirjauksia, ei voida poistaa!");
+                }
+
+                // Poistetaan tietoa Tehtävä-taulusta
+                else
+                {
+                    TehtavatTableAdapter adap = new TehtavatTableAdapter();
+                    adap.Fill(ds.Tehtavat);
+                    adap.DeleteQuery(item.TehtavatId, item.Tehtava);
+                    adap.Update(ds.Tehtavat);
+                    HaeDataTehtavat();
+                }
             }
         }
 
@@ -136,16 +139,28 @@ namespace työaika
 
         private void btnKohdePoista_Click(object sender, RoutedEventArgs e)
         {
-            //Marjolle hommia
+            // Poistetaan tietoa Kohde-taulusta
             if (listViewKohde.SelectedItem != null)
             {
-                DataSet1 ds = new DataSet1();
-                KohteetTableAdapter adap = new KohteetTableAdapter();
-                adap.Fill(ds.Kohteet);
                 Kohteet item = (Kohteet)listViewKohde.SelectedItem;
-                adap.DeleteQuery(item.KohdeID, item.Kohde);
-                adap.Update(ds.Kohteet);
-                HaeDataKohde();
+
+                DataSet1 ds = new DataSet1();
+                KirjausTableAdapter adapKirjaus = new KirjausTableAdapter();
+                adapKirjaus.FillBy(ds.Kirjaus, item.KohdeID);
+                if (ds.Tables["Kirjaus"].Rows.Count > 0)
+                {
+                    MessageBox.Show("Kohteelle on kirjauksia, ei voida poistaa!");
+                }
+
+                // Poistetaan tietoa Tehtävä-taulusta
+                else
+                {
+                    KohteetTableAdapter adap = new KohteetTableAdapter();
+                    adap.Fill(ds.Kohteet);
+                    adap.DeleteQuery(item.KohdeID, item.Kohde);
+                    adap.Update(ds.Kohteet);
+                    HaeDataKohde();
+                }
             }
         }
 
@@ -158,7 +173,7 @@ namespace työaika
                 MessageBox.Show("Päivämäärä on tyhjä.", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             //Etsitään SQL komentoja tietokantaan lisättävästä rivistä
-            if (kiellettySana(vteksti) == true)
+            else if (kiellettySana(vteksti) == true)
             {
                 MessageBox.Show("Sisältää SQL komentoja, korjaa vapaateksti");
             }
@@ -280,6 +295,8 @@ namespace työaika
 
         }
 
+        // Haetaan Tehtävä-taulusta data comboboxeihin
+
         private void HaeDataTehtavat()
         {
             DataSet1 ds = new DataSet1();
@@ -305,6 +322,8 @@ namespace työaika
             this.listViewTehtavat.ItemsSource = tehtavat;
             this.textBoxTehtava.Clear();
         }
+
+        // Haetaan Kohde-taulusta data comboboxeihin
 
         private void HaeDataKohde()
         {
@@ -360,6 +379,8 @@ namespace työaika
 
         }
 
+        /* Haetaan tietokannasta käyttäjän aiemmin syöttämät työajat ja listataan ne näkymään
+            Mikäli päivämäärävalitsimet jää tyhjäksi, annetaan tästä ilmoitus*/
 
         private void bntHae_Click(object sender, RoutedEventArgs e)
         {
@@ -391,40 +412,9 @@ namespace työaika
                     this.listViewRaportti.Items.Add(t);
                 }
             }
-            
-
-            //this.listViewRaportti.Items.Clear();
-            /*
-             * 
-             * 
-             *  DataSet1 ds = new DataSet1();
-            tyoaika.DataSet1TableAdapters.KohteetTableAdapter adap =
-                new tyoaika.DataSet1TableAdapters.KohteetTableAdapter();
-            kohteet.Clear();
-            adap.Fill(ds.Kohteet);
-            this.comboBoxKohde.Items.Clear();
-            this.comboBoxKohde.SelectedIndex = 0;
-            foreach (DataRow row in ds.Tables["Kohteet"].Rows)
-            {
-                Kohteet k = new Kohteet();
-                k.KohdeID = int.Parse(row["KohdeID"].ToString());
-                k.Kohde = row["Kohde"].ToString();
-                kohteet.Add(k);
-                this.comboBoxKohde.Items.Add(k.KohdeID + " " + k.Kohde);
-            }
-            this.listViewKohde.ItemsSource = kohteet;
-            this.textBoxKohde.Clear();
-             * var select = "SELECT * FROM Kirjaus";
-            var c = new SqlConnection("Data Source=BLACKBOX\\SQLEXPRESS;Initial Catalog=Projekti;Integrated Security=True"); // Your Connection String here
-            var dataAdapter = new SqlDataAdapter(select, c);
-
-            var commandBuilder = new SqlCommandBuilder(dataAdapter);
-            var ds = new DataSet();
-            dataAdapter.Fill(ds);
-            */
-
-
         }
+
+        // Tallennetaan näkymän tiedot haluttuun tiedostomuotoon
 
         private void btnRaportti_Click(object sender, RoutedEventArgs e)
         {
@@ -438,6 +428,8 @@ namespace työaika
                 File.WriteAllText(sfd.FileName, ListViewToCSV(listViewRaportti).ToString(), Encoding.UTF8);
             }
         }
+
+        // Muunnetaan erotinmerkit Excel-yhteensopivaksi
 
         public static StringBuilder ListViewToCSV(ListView listView)
         {
