@@ -224,7 +224,7 @@ namespace työaika
         {
             DataSet1 ds = new DataSet1();
 
-            // Lisätään työaika -välilehden listanäkymässä olevat rivit tietokantaan
+            // Lisätään työaika -välilehden listanäkymässä olevat rivit  sekä työntekijän ID numero Kirjaus -tauluun tietokantaan 
             foreach (Tyoaika t in tyoaika)
             {
                 DataSet1.KirjausRow rivi = ds.Kirjaus.NewKirjausRow();
