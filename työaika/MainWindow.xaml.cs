@@ -40,6 +40,9 @@ namespace työaika
 
         private ObservableCollection<Tyoaika> tyoaika = new ObservableCollection<Tyoaika>();
 
+         //Lisätään työntekijänID numero
+        int globaltyöntekijäID = -1;
+
 
         public MainWindow()
         {
@@ -226,6 +229,7 @@ namespace työaika
             {
                 DataSet1.KirjausRow rivi = ds.Kirjaus.NewKirjausRow();
 
+                rivi.TyontekijaID = globaltyöntekijäID;
                 rivi.TehtavaID = t.TehtavaID;
                 rivi.KohdeID = t.KohdeID;
                 rivi.Pvm = t.Pvm;
@@ -255,6 +259,8 @@ namespace työaika
             tyoaika.Clear();
         }
 
+       
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             HaeDataTehtavat();
@@ -274,6 +280,7 @@ namespace työaika
             {
                 string kTunnus = row["Kayttajatunnus"].ToString();
                 var kOikeus = row["Kayttooikeus"];
+                globaltyöntekijäID = (int)row["TyontekijaID"];
 
                 //Käyttäjäoikeuksilla = kOikeus numero 1 on oikeudet asetukset välilehteen muilla ei
                 if (kayttajatunnus.CompareTo(kTunnus) == 0 && kOikeus.Equals(1))
