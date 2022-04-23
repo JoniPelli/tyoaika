@@ -198,6 +198,7 @@ namespace työaika
 
                 //lisätään Tyoaika-olio tyoaika kokoelmaan
                 tyoaika.Add(t);
+                textBoxVapaateksti.Clear();
             }
         }
 
